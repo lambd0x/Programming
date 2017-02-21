@@ -2,4 +2,6 @@
 Learning &amp; fun/anger/peace.
 
 ## Languages list
-- Perl6
+- Perl6 (2016)
+- C++
+- Haskell

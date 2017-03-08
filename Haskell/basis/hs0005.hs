@@ -38,23 +38,16 @@ mini (x:xa) = min2 x xa
         min2 y (x:xs) = if y<x then min2 y xs else min2 x xs
 
 -- Returns the exponential of n
-expo a b = a^b
+powr a 0 = 1
+powr a x = a * (powr a (x-1))
 
 -- Returns the converted value of a binary number
-bin2Int xs = bin2Int_ 0 0 (invert xs)
-    where
-        bin2Int_ a v [] = v
-        bin2Int_ a v (x:xs) = if x=='1' then bin2Int_ (a+1) (v+(expo 2 a)) xs else bin2Int_ (a+1) v xs
+bin xs = bin2 (reverse xs)
+ where
+  bin2 [x] = bin3 x
+  bin2 (x:xs) = bin3 x + 2 * (bin2 xs)
+  bin3 '0' = 0
+  bin3 '1' = 1
 
 -- Returns the result whether the input is prime or odd (0 is prime)
 primeCheck a = if rem a 2==0 || a == 0 then True else False
-
--- Returns a list less the element informed
-remo _ [] = []
-remo a (x:xs) = if a==x then remo a xs else (x:remo a xs)
-
--- Returns a sorted lista
-sort a = sortL (mini a) a
-    where
-        sortL x (a:as) = if x == a then remo x (a:as) else ([x,a]++sortL x as)
-

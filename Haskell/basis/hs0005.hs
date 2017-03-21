@@ -50,14 +50,14 @@ bin xs = bin2 (reverse xs)
   bin3 '1' = 1
 
 -- Returns the result whether the input is even or odd (0 is even)
-evenCheck a = if rem a 2==0 || a == 0 then True else False
+evk a = if rem a 2==0 || a == 0 then True else False
 
 -- Returns the list according to the predicative's rule
 pApply _ [] = []
 pApply a (x:xs) = if a x == True then x:pApply a xs else pApply a xs
 
 -- Returns the list according to the negation of the predicative's rule
-pNApply xs = pApply (not . evenCheck) xs
+pNApply xs = pApply (not . evk) xs
 
 -- Returns a list with the first elements from a list of tuples.
 firstList = map (\(a,b) -> a)
@@ -69,9 +69,16 @@ truth a = foldr (&&) True a
 sumL (x:xs) = foldr (+) x xs
 
 -- Returns a list of tuples from two lists
---tupAll x y = foldl (:) x y
+tupAll [] [] = []
+tupAll (x:xs) (y:ys) = (x,y):tupAll xs ys
+
+-- Returns True if a element doesn't divide anyone else.
+notd _ [] = []
+notd a (x:xs) = if (mod x a /= 0) then True:notd a xs else False:notd a xs
+
 
 -- Returns using the sieve of eratosthenes a list of primes
---siev = test [2..]
+--siev a = test [2..a]
 --    where
---         test (x:xs) = x:test(subtract xs [x, x+x..])
+--        test [] = []
+--        test (x:xs) =  if truth (notd  x xs) && not (evk x) then x:test xs else test xs

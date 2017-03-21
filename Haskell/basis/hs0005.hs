@@ -49,5 +49,29 @@ bin xs = bin2 (reverse xs)
   bin3 '0' = 0
   bin3 '1' = 1
 
--- Returns the result whether the input is prime or odd (0 is prime)
-primeCheck a = if rem a 2==0 || a == 0 then True else False
+-- Returns the result whether the input is even or odd (0 is even)
+evenCheck a = if rem a 2==0 || a == 0 then True else False
+
+-- Returns the list according to the predicative's rule
+pApply _ [] = []
+pApply a (x:xs) = if a x == True then x:pApply a xs else pApply a xs
+
+-- Returns the list according to the negation of the predicative's rule
+pNApply xs = pApply (not . evenCheck) xs
+
+-- Returns a list with the first elements from a list of tuples.
+firstList = map (\(a,b) -> a)
+
+-- Returns True or False according to the truth list
+truth a = foldr (&&) True a
+
+-- Returns the sum of the element's list
+sumL (x:xs) = foldr (+) x xs
+
+-- Returns a list of tuples from two lists
+--tupAll x y = foldl (:) x y
+
+-- Returns using the sieve of eratosthenes a list of primes
+--siev = test [2..]
+--    where
+--         test (x:xs) = x:test(subtract xs [x, x+x..])

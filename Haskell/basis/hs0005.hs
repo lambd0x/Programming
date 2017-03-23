@@ -72,13 +72,15 @@ sumL (x:xs) = foldr (+) x xs
 tupAll [] [] = []
 tupAll (x:xs) (y:ys) = (x,y):tupAll xs ys
 
--- Returns True if a element doesn't divide anyone else.
-notd _ [] = []
-notd a (x:xs) = if (mod x a /= 0) then True:notd a xs else False:notd a xs
-
-
 -- Returns using the sieve of eratosthenes a list of primes
---siev a = test [2..a]
---    where
---        test [] = []
---        test (x:xs) =  if truth (notd  x xs) && not (evk x) then x:test xs else test xs
+prime (x:xs) = x:(prime(filter (divi x) xs))
+    where
+        divi a b = (mod b a) /= 0
+
+-- Implements the filter functionality
+filtera f (xs) = [x | x<-xs, f x]
+
+-- Gen. the fibo sequence indef
+fibao = fibo 0 1
+    where
+        fibo a b = a:fibo b (b+a)

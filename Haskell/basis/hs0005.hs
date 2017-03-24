@@ -78,7 +78,6 @@ notd a (x:xs) = if (mod x a /= 0) then True:notd a xs else False:notd a xs
 
 
 -- Returns using the sieve of eratosthenes a list of primes
---siev a = test [2..a]
---    where
---        test [] = []
---        test (x:xs) =  if truth (notd  x xs) && not (evk x) then x:test xs else test xs
+siev = test [2..]
+    where
+        test (x:xs) = filter evk x

@@ -84,3 +84,43 @@ filtera f (xs) = [x | x<-xs, f x]
 fibao = fibo 0 1
     where
         fibo a b = a:fibo b (b+a)
+
+-- Abstract Type(AT) performing natural number's operations
+data Nat = Zero | Sec Nat deriving Show
+
+-- AT natural's autoincrement
+inc x = (Suc x)
+
+-- AT natural's sum
+summ Zero    y = y
+summ (Suc x) y = soma x (Suc y)
+
+--AT natural's product
+prod (Suc Zero) y = y
+prod Zero       y = Zero
+prod y       Zero = Zero
+prod x    (Suc y) = summ x (prod x y)
+
+--AT natural's subtraction
+subt x  Zero = x
+subt Zero  y = Zero
+subt (Suc x) (Suc y) = subt x y
+
+--AT natural's division
+divy x y = divy2 x y Zero
+  where
+    divy2 _ Zero       const = error "Error!"
+    divy2 x (Suc Zero) const = x
+    divy2 Zero y       const = (Suc const)
+    divy2 x y          const = dive2 (sube x y) y (Suc const)
+
+--Regular natural to AT natural
+natCV 0 = Zero
+natCV x = Suc (natCV(x-1))
+
+cvNAT Zero = 0
+cvNAT (Suc x) = 1 + (cvNAT(x))
+
+--AT natural to regular natural
+
+

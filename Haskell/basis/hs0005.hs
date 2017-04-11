@@ -86,14 +86,14 @@ fibao = fibo 0 1
         fibo a b = a:fibo b (b+a)
 
 -- Abstract Type(AT) performing natural number's operations
-data Nat = Zero | Sec Nat deriving Show
+data Nat = Zero | Suc Nat deriving Show
 
 -- AT natural's autoincrement
 inc x = (Suc x)
 
 -- AT natural's sum
 summ Zero    y = y
-summ (Suc x) y = soma x (Suc y)
+summ (Suc x) y = summ x (Suc y)
 
 --AT natural's product
 prod (Suc Zero) y = y
@@ -107,20 +107,20 @@ subt Zero  y = Zero
 subt (Suc x) (Suc y) = subt x y
 
 --AT natural's division
-divy x y = divy2 x y Zero
+divy x y = divy2 (natCV (x))(natCV (y)) Zero
   where
     divy2 _ Zero       const = error "Error!"
     divy2 x (Suc Zero) const = x
-    divy2 Zero y       const = (Suc const)
-    divy2 x y          const = dive2 (sube x y) y (Suc const)
+    divy2 Zero y       const = const
+    divy2 x y          const = divy2 (subt x y) y (Suc const)
 
 --Regular natural to AT natural
 natCV 0 = Zero
 natCV x = Suc (natCV(x-1))
 
+--AT natural to regular natural
 cvNAT Zero = 0
 cvNAT (Suc x) = 1 + (cvNAT(x))
 
---AT natural to regular natural
 
 

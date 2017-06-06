@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 # BucketSort insertion if elems less than 11 or else uses countingSort. 
 # Time complexities: Best = (n+k) Average = (n²) Worst = (n²). Space complexity: Worst = (n+k)
 

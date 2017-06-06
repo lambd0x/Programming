@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 # Selection sort, Time complexities: Average = (n²). Space complexities: Worst = (1)
 
 sub store { my $name = @*ARGS.shift; "$name.txt".IO.words; }

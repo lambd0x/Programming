@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 # MergeSort. Time completixies: Average = nlog(n)). Space complexities: Worst = (n)
 
 sub store { my $name = @*ARGS.shift; "$name.txt".IO.words; }

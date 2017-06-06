@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 # HeapSort. Time complexities: Average = (nlog(n)). Space complexities: Worst = (1)
 
 sub store { my $name = @*ARGS.shift; "$name.txt".IO.words; }

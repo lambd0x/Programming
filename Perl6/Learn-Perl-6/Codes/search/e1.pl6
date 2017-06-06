@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 #iBinary search using arrays. Time complexities worst: O(log(n)), best: Omega(log(n)). Space complexities: Tetha(1)
 sub input() { my $name = @*ARGS.shift; "$name.txt".IO.words; }
 

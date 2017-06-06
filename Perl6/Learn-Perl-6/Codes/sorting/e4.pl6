@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 # QuickSort impl. fist el. pivot, Time complexities: Best = (nlog(n)) Average = (n²) Worst = (n²). Time complexities: Worst = (n)
 
 sub store { my $name = @*ARGS.shift; "$name.txt".IO.words; }

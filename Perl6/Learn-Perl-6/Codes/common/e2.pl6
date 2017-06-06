@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 
 sub menu() {
 	say q:to/^/;

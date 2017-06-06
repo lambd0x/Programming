@@ -1,5 +1,5 @@
 ## Codes done so far
 
-| Título | Definição | Status  |
+| Title | Definition | Status  |
 ---------|-----------|---------|
-tic-tac-toe | a very interesting tic-tac-toe game | ok |
+code1.hs | a very interesting tic-tac-toe game | ok |

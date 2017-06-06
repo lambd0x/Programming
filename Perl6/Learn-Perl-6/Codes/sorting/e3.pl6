@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 # Insert sort, Time complexities: Best = (n) Average = (n²) Worst = (n²). Space complexities: Worst = (1)
 
 sub store { my $name = @*ARGS.shift; "$name.txt".IO.words; }

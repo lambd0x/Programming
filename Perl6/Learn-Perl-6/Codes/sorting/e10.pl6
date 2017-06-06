@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 # BucketSort sorting with insertionSort. Time complexities: Best = (n+k), Average = (n²) Worst = (n²). Space complexity: Worst = (n+k)
 
 sub store { my $name = @*ARGS.shift; "$name.txt".IO.words; }

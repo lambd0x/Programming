@@ -1,4 +1,4 @@
-#!/usr/bin/perl6
+use Perl6;
 # RadixSort. Time complexities: Best = (n) Average = (n²) Worst = (n²). Space Complexity: Worst = (n²)
 
 sub store { my $name = @*ARGS.shift; "$name.txt".IO.words; }

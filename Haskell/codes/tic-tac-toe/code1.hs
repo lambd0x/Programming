@@ -2,15 +2,12 @@ import Data.List
 import Data.List.Split
 import Control.Monad
 
---data Jogador = O | X | V deriving (Eq,Show)
-type Tabuleiro = [Char]
-
 ------------------------------
 ------- Single Player --------
 ------------------------------
 
 -------------------------------
--- Imprime o tabuleiro do jogo
+-- Print the game
 mostraTabuleiro str =
  "   |   |   \n" ++ " " ++ (str !! 0 :[]) ++ " | " ++ (str !! 1 :[]) ++ " | " ++ (str !! 2 :[])  ++ " \n" ++ 
  "   |   |   \n" ++ 
@@ -22,48 +19,54 @@ mostraTabuleiro str =
  "   |   |   \n"
 
 -------------------------------
---Verifica se é um número tal que [0 <= c <= 9]
+--Verifies whether the number is between the boundaries such as [0 <= c <= 9]
 eNumero c = filter (\x->x==c) ['0'..'9'] /= []
 
 -------------------------------
---Verifica se a jogada é válida
+--Verifies whether the play is valid
 -- Dependências: eNumero
 jogadaValida tabuleiro p
- | p < 0 || p >= 9 = False          -- ok caso o movimento do jogador for um número entre [0..8]
- | eNumero(tabuleiro !! p) = True   -- ok caso o movimento do jogador não retorne uma letra (retorno []) 
- | otherwise = False                -- posicao ocupada
+ | p < 0 || p >= 9 = False          -- ok if within boundaries
+ | eNumero(tabuleiro !! p) = True   -- ok if player's moviment doesn't return a letter (causing a []) 
+ | otherwise = False                -- says if the position is already taken
   
 -------------------------------
---Verifica as jogadas possíveis e retorna uma lista delas
+--Verifies the possible gaming options and return it as a list
+-- Dependências: vitoria, jogadaValida
 jogadaPossivel tabuleiro
  | (vitoria tabuleiro) /= ' ' = []
  | otherwise = [y | y <- [0..8], (jogadaValida tabuleiro y)]
   
 -------------------------------
---Insere o movimento no tabuleiro
+--Insert the moviment in the table
+-- Dependências: ins
 ins (p:tabuleiro) jogChar pos
  | pos > 0 = p:[] ++ (ins tabuleiro jogChar (pos - 1))
  | otherwise = jogChar:[] ++ tabuleiro
  
 -------------------------------
---Informa quem foi o vencedor da partida 
+--Tells who has won 
+-- Dependências: vitoria
 jogadorVencedor tabuleiro jogador
  | (vitoria tabuleiro) == ' '   = 0
  | (vitoria tabuleiro) == jogador = 1
  | otherwise = -1
   
 -------------------------------
---Compara a igualdade de duas tuplas 
+--Verifies the equality of the tuples 
+-- Dependências: none
 cmpTuplas fn (m0, s0) (m1, s1)
  | fn s0 s1 = (m0, s0)
  | otherwise = (m1, s1)
  
 -------------------------------
---Seleciona o movimento da CPU 
+--Select the cpu's moviment 
+-- Dependências: cmpTuplas
 selecionaMove fn (mv:moves) = foldr (cmpTuplas fn) mv moves
 
 -------------------------------
---Função de avaliação Mini da CPU 
+--Mini CPU's evaluation function 
+-- Dependências: jogadaPossivel, jogadorVencedor, ins, avaliarTabuleiroMax
 avaliarTabuleiroMini tabuleiro
  | length (jogadaPossivel tabuleiro) == 0 = jogadorVencedor tabuleiro 'O'
  | otherwise = foldr max (head placar) (tail placar)
@@ -72,7 +75,8 @@ avaliarTabuleiroMini tabuleiro
   placar = map avaliarTabuleiroMax tabuleiro'
 
 ------------------------------
---Função de avaliação Max da CPU
+--Max CPU's evaluation function
+-- Dependências: jogadaPossivel, jogadorVencedor, ins, avaliarTabuleiroMini
 avaliarTabuleiroMax tabuleiro
  | length (jogadaPossivel tabuleiro) == 0    = jogadorVencedor tabuleiro 'O'
  | otherwise = foldr min (head placar) (tail placar)
@@ -81,40 +85,43 @@ avaliarTabuleiroMax tabuleiro
   placar = map avaliarTabuleiroMini tabuleiro'
  
 ------------------------------
---Define pontuação para as posições a serem avaliadas pela CPU
-
+--Define a score for each position to be evaluated by the CPU
+-- Dependências: jogadaPossivel, ins, avaliarTabuleiroMax
 pontuacaoPosicoes tabuleiro = zip (jogadaPossivel tabuleiro) placar
  where
   tabuleiro' = map (ins tabuleiro 'O') (jogadaPossivel tabuleiro)
   placar = map avaliarTabuleiroMax tabuleiro'
 
 ------------------------------
---Define a maior pontuação dado as posicões
-
+--Define the highest score from the set of positions
 pontuacaoPosicoesMax (m0, s0) (m1, s1)
  | s0 > s1 = (m0, s0)
  | otherwise = (m1, s1)
   
 ------------------------------
---Escolhe a melhor jogada para a CPU. Escolha feita com base na pontuação das posições
+--Chooses the best play for the CPU. Action takes the score of the positions in account
+-- Dependências: pontuacaoPosicoesMax, pontuacaoPosicoes
 melhorJogada tabuleiro = ins
  where
   placar = pontuacaoPosicoes tabuleiro
   (ins, a) = foldr pontuacaoPosicoesMax (head placar) (tail placar)
   
 ------------------------------
---jogada atual do jogador em Single Player 
+--Current play of P1 in Single Player 
+-- Dependências: jogadaValida, ins
 jogadaJogador tabuleiro pos
  | not (jogadaValida tabuleiro pos) = (False, tabuleiro) -- Se falso retorna-o junto ao tabuleiro inalterado
  | otherwise = (True, (ins tabuleiro 'X' pos))           -- Se verdade retorna-o junto ao tabuleiro atualizado
 
- --jogada atual do jogador 2 em Multiplayer 
+------------------------------
+--Current play of P2 in Multiplayer 
+-- Dependências: jogadaValida, ins
 jogadaJogador2 tabuleiro pos
  | not (jogadaValida tabuleiro pos) = (False, tabuleiro) -- Se falso retorna-o junto ao tabuleiro inalterado
  | otherwise = (True, (ins tabuleiro 'O' pos))           -- Se verdade retorna-o junto ao tabuleiro atualizado
  
 ------------------------------
---Verifica todas as condições de vitória
+--Verifies all the victory conditions
 vitoria t
  -- Testes horizontais
  | (t !! 0) /= ' ' && ((t !! 0) == (t !! 1) && (t !! 0) == (t !! 2)) = t !! 0
@@ -131,7 +138,8 @@ vitoria t
  | otherwise = ' '
 
 ------------------------------
---Rotina principal da partida Single Player
+--Main routine of Single Player mode
+-- Dependências: mostraTabuleiro, vitoria, jogadaPossivel, jogadaJogador, melhorJogada
 jogarSingle tabuleiro = do
     --apresenta o tabuleiro
     putStrLn (mostraTabuleiro tabuleiro)
@@ -166,7 +174,8 @@ jogarSingle tabuleiro = do
            jogarSingle tabuleiro  
 
 -------------------------------
---Main do Single player
+--Main function of Single player mode
+-- Dependências: jogarSingle
 sp = do
   putStrLn "Jogador Vs CPU!\n"
   jogarSingle "012345678"
@@ -176,7 +185,8 @@ sp = do
 --------------------------------
 
 ------------------------------
---Rotina principal da partida Multiplayer
+--Main routine of Multiplayer mode
+-- Dependências: mostraTabuleiro, vitoria, jogadaPossivel
 jogarDual tabuleiro = do
     --apresenta o tabuleiro
     putStrLn (mostraTabuleiro tabuleiro)
@@ -256,7 +266,7 @@ jogarDual tabuleiro = do
            jogarDual tabuleiro  
 
 -------------------------------
---Main do multiplayer
+--Main function of Single Player.
 mp = do
   putStrLn "Jogador Vs Jogador!\n"
   jogarDual "012345678"

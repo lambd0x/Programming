@@ -13,4 +13,4 @@ Once added to the PATH issue the following cmds:
 
 #How to install modules for Rakudo Perl6 using Zef?
 - Browse https://modules.perl6.org until you found what u want
-- 1) *zef install your_module
+- 1 _zef install your_module_

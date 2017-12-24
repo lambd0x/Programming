@@ -1,6 +1,6 @@
 # List of codes  
 | Name   | Description                                              | Status | Location |
-| :---:  |  :---:                                                   | :---:  | common   |
+| :---:  |  :---:                                                   | :---:  | :---:    |
 | com_01 | Asks for a name and prints it                            | Ok     | common   |
 | com_02 | Arithmetic calc                                          | Ok     | common   |
 | com_03 | Crud                                                     | Ok     | common   |

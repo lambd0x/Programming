@@ -1,4 +1,4 @@
-use Perl6;
+use v6;
 # bubble sorting algorithm, Time complexities: Average = (n²). Space complexities: Worst: (1)
 
 sub store { my $name = @*ARGS.shift; "$name.txt".IO.words; }

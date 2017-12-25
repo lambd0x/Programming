@@ -15,15 +15,15 @@
 | cry_02 | Array of messages encryption/decryption [RC4]            | Ok     | crypto   |
 | cry_03 | Message encryption/decryption I/O [RC4]                  | Ok     | crypto   |
 | sea_01 | Binary search                                            | Ok     | search   |
-| sor_02 | Bubble Sort                                              | Ok     | sort     |
-| sor_03 | Selection Sort                                           | Ok     | sort     | 
-| sor_04 | Insertion Sort                                           | Ok     | sort     |
-| sor_05 | Quick Sort impl. first el. pivot                         | Ok     | sort     |
-| sor_06 | Quick Sort impl. random pivot                            | Ok     | sort     |
-| sor_07 | Heap Sort                                                | Ok     | sort     |
-| sor_08 | Merge Sort                                               | Ok     | sort     |
-| sor_09 | Counting Sort                                            | Ok     | sort     |
-| sor_10 | Radix Sort                                               | Ok     | sort     |
-| sor_11 | Bucket Sort impl. using Insertion Sort                   | Ok     | sort     |
-| sor_12 | Bucket Sort impl. using Insertion Sort and Counting Sort | Ok     | sort     |
+| sor_01 | Bubble Sort                                              | Ok     | sort     |
+| sor_02 | Selection Sort                                           | Ok     | sort     | 
+| sor_03 | Insertion Sort                                           | Ok     | sort     |
+| sor_04 | Quick Sort impl. first el. pivot                         | Ok     | sort     |
+| sor_05 | Quick Sort impl. random pivot                            | Ok     | sort     |
+| sor_06 | Heap Sort                                                | Ok     | sort     |
+| sor_07 | Merge Sort                                               | Ok     | sort     |
+| sor_08 | Counting Sort                                            | Ok     | sort     |
+| sor_09 | Radix Sort                                               | Ok     | sort     |
+| sor_10 | Bucket Sort impl. using Insertion Sort                   | Ok     | sort     |
+| sor_11 | Bucket Sort impl. using Insertion Sort and Counting Sort | Ok     | sort     |
 

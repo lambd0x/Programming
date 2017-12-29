@@ -1,4 +1,4 @@
-use Perl6;
+use v6;
 
 #bidimensional array 
 my @arrayOne[3;3];

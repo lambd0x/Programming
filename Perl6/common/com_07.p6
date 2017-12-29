@@ -1,4 +1,4 @@
-use Perl6;
+use v6;
 
 #ways of declaring a hash variable
 my %hash0 = a => 1, b => 2, c => 3; 	# 1st

@@ -1,4 +1,4 @@
-use Perl6;
+use v6;
 
 sub infix:<pickashoe>($name, $time) { say "$name pick a shoe $time"; }
 

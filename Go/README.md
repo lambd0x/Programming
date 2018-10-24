@@ -1,1 +1,1 @@
-Keep track of the workspace of Go.
+Keep track of Go's workspace.

@@ -1,0 +1,308 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans";
+}
+
+/**BootCSS**/
+/** classes predefinidas padroes **/
+
+img {
+    width: 100%;
+    max-width: 250px;
+}
+
+.center {
+    margin: 0 auto;
+    padding: 0 2%;
+    max-width: 1280px;
+}
+
+.w33 {
+    width: 33%;
+    padding: 0 10px;
+}
+
+.w50 {
+    padding: 0 10px;
+    width: 50%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+/**Estilização do sitio**/
+header {
+    background: #3D437A;
+    padding: 20px 0;
+}
+
+header .logo {
+    font-size: 25px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
+.mobile {
+    display: none;
+}
+
+nav.desktop ul {
+    list-style-type: none;
+    position: relative;
+    top: 6px;
+}
+
+nav.desktop li {
+    font-weight: 300;
+    font-size: 15px;
+    padding: 0 30px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+nav.desktop a {
+    color: white;
+    text-decoration: none;
+}
+
+section.banner-principal {
+    height: 600px;
+    width: 100%;
+    background-image: url("../images/banner.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+section.banner-principal form {
+    width: 93%;
+    max-width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index=2;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+section.banner-principal h2 {
+    color: white;
+    font-weight: 300;
+    font-size: 30px;
+    text-align: center;
+}
+
+section.banner-principal form input[type=email] {
+    width: 100%;
+    height: 66%;
+    background: white;
+    color: #333;
+    font-size: 22px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+section.banner-principal form input[type=submit] {
+    width: 100%;
+    height: 66%;
+    background: #00C59E;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    margin-top: 10px;
+    padding-left: 10px;
+    border: 0;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index=1;
+}
+
+section.descricao-autor {
+    padding: 40px 0;
+}
+
+section.descricao-autor h2 {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+section.descricao-autor p {
+    font-size: 16px;
+    color: #444;
+    margin-top: 10px;
+}
+
+section.especialidades {
+    padding: 40px 0;
+    background: #E2E2E2;
+}
+
+section.especialidades h2.title {
+    font-size: 30px;
+    font-weight: 400;
+    color: #999;
+    text-align: center;
+}
+
+.box-especialidade {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.box-especialidade h3 {
+    color: #404580;
+    font-size: 40px;
+}
+
+.box-especialidade h4 {
+    font-weight: 400;
+    font-size: 25px;
+    color: #BABABA;
+}
+
+.box-especialidade p {
+    color: #444;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+section.extras {
+    padding: 30px 0;
+    background: #404580;
+}
+
+.depoimentos-container,
+.servicos-container {
+    padding: 0 50px;
+}
+
+section.extras .title {
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 300;
+    font-size: 25px;
+}
+
+.depoimentos_single {
+    padding: 15px 0;
+    border-bottom: 1px solid #5056A0;
+}
+
+p.depoimentos_desc {
+    font-size: 15px;
+    color: white;
+    font-weight: 300;
+}
+
+p.nome-autor {
+    font-size: 15px;
+    color: white;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+div.servicos ul {
+    margin: 20px 0;
+}
+
+div.servicos li {
+    font-size: 15px;
+    color: white;
+    font-weight: 300;
+}
+
+footer {
+    background: #313462;
+    padding: 30px 0;
+}
+
+footer p {
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    img {
+        float: none !important;
+        display: block;
+    }
+
+    .w50 {
+        padding 20px;
+        width: 100%;
+    }
+
+    .w33 {
+        padding 20px;
+        width: 100%;
+    }
+
+    .box-especialidade {
+        padding: 40px 20px;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    nav.desktop {
+        display: none;
+    }
+
+    nav.mobile {
+        display: block;
+    }
+
+    .botao-menu-mobile {
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+    }
+
+    nav.mobile ul {
+        top: 55px;
+        z-index: 3;
+        display: none;
+        left: 0;
+        width: 100%;
+        position: absolute;
+        text-align: center;
+    }
+
+    nav.mobile li {
+        font-weight: 300;
+        font-size: 17px;
+        background: white;
+        border-bottom: 1px solid #ccc;
+        padding: 8px 0;
+    }
+
+    nav.mobile li a {
+        display: block;
+        color: #444;
+        text-decoration: none;
+    }
+}

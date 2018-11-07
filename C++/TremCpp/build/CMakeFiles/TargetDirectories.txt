@@ -1,7 +1,6 @@
-/home/lambd0x/Git-repos/Programming/C++/TremCpp/build/CMakeFiles/install/strip.dir
-/home/lambd0x/Git-repos/Programming/C++/TremCpp/build/CMakeFiles/edit_cache.dir
-/home/lambd0x/Git-repos/Programming/C++/TremCpp/build/CMakeFiles/trem.dir
-/home/lambd0x/Git-repos/Programming/C++/TremCpp/build/CMakeFiles/rebuild_cache.dir
-/home/lambd0x/Git-repos/Programming/C++/TremCpp/build/CMakeFiles/list_install_components.dir
-/home/lambd0x/Git-repos/Programming/C++/TremCpp/build/CMakeFiles/install/local.dir
-/home/lambd0x/Git-repos/Programming/C++/TremCpp/build/CMakeFiles/install.dir
+/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/edit_cache.dir
+/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/list_install_components.dir
+/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/install/local.dir
+/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/rebuild_cache.dir
+/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir
+/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/install.dir

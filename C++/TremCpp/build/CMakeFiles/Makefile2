@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/udesc/Downloads/Programming/C++/TremCpp
+CMAKE_SOURCE_DIR = /home/udesc/Programming/C++/TremCpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/udesc/Downloads/Programming/C++/TremCpp/build
+CMAKE_BINARY_DIR = /home/udesc/Programming/C++/TremCpp/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/trem.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/udesc/Downloads/Programming/C++/TremCpp/build
 CMakeFiles/trem.dir/all:
 	$(MAKE) -f CMakeFiles/trem.dir/build.make CMakeFiles/trem.dir/depend
 	$(MAKE) -f CMakeFiles/trem.dir/build.make CMakeFiles/trem.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target trem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/udesc/Programming/C++/TremCpp/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target trem"
 .PHONY : CMakeFiles/trem.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/trem.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/trem.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/udesc/Programming/C++/TremCpp/build/CMakeFiles 12
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/trem.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/udesc/Programming/C++/TremCpp/build/CMakeFiles 0
 .PHONY : CMakeFiles/trem.dir/rule
 
 # Convenience name for target.

@@ -6,87 +6,87 @@
 
 #IncludeRegexTransform: 
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/draw.cpp
+/home/udesc/Programming/C++/TremCpp/class/draw.cpp
 draw.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/draw.h
+/home/udesc/Programming/C++/TremCpp/class/draw.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/draw.h
+/home/udesc/Programming/C++/TremCpp/class/draw.h
 opencv2/opencv.hpp
 -
 string
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/linep.cpp
+/home/udesc/Programming/C++/TremCpp/class/linep.cpp
 linep.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/linep.h
+/home/udesc/Programming/C++/TremCpp/class/linep.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/linep.h
+/home/udesc/Programming/C++/TremCpp/class/linep.h
 opencv2/opencv.hpp
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/mapatrem.cpp
+/home/udesc/Programming/C++/TremCpp/class/mapatrem.cpp
 mapatrem.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/mapatrem.h
+/home/udesc/Programming/C++/TremCpp/class/mapatrem.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/mapatrem.h
+/home/udesc/Programming/C++/TremCpp/class/mapatrem.h
 threads/sema.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/sema.h
+/home/udesc/Programming/C++/TremCpp/class/threads/sema.h
 threads/thread.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.h
+/home/udesc/Programming/C++/TremCpp/class/threads/thread.h
 threads/task.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/task.h
+/home/udesc/Programming/C++/TremCpp/class/threads/task.h
 linep.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/linep.h
+/home/udesc/Programming/C++/TremCpp/class/linep.h
 string
 -
 opencv2/opencv.hpp
 -
 draw.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/draw.h
+/home/udesc/Programming/C++/TremCpp/class/draw.h
 path.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/path.h
+/home/udesc/Programming/C++/TremCpp/class/path.h
 vector
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/path.cpp
+/home/udesc/Programming/C++/TremCpp/class/path.cpp
 path.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/path.h
+/home/udesc/Programming/C++/TremCpp/class/path.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/path.h
+/home/udesc/Programming/C++/TremCpp/class/path.h
 linep.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/linep.h
+/home/udesc/Programming/C++/TremCpp/class/linep.h
 vector
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/sema.cpp
+/home/udesc/Programming/C++/TremCpp/class/threads/sema.cpp
 sema.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/sema.h
+/home/udesc/Programming/C++/TremCpp/class/threads/sema.h
 thread.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.h
+/home/udesc/Programming/C++/TremCpp/class/threads/thread.h
 iostream
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/sema.h
+/home/udesc/Programming/C++/TremCpp/class/threads/sema.h
 semaphore.h
 -
 windows.h
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/task.cpp
+/home/udesc/Programming/C++/TremCpp/class/threads/task.cpp
 task.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/task.h
+/home/udesc/Programming/C++/TremCpp/class/threads/task.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/task.h
+/home/udesc/Programming/C++/TremCpp/class/threads/task.h
 vector
 -
 algorithm
 -
 sema.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/sema.h
+/home/udesc/Programming/C++/TremCpp/class/threads/sema.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/taskparam.cpp
+/home/udesc/Programming/C++/TremCpp/class/threads/taskparam.cpp
 taskparam.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/taskparam.h
+/home/udesc/Programming/C++/TremCpp/class/threads/taskparam.h
 pthread.h
 -
 unistd.h
@@ -96,21 +96,21 @@ cxxabi.h
 windows.h
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/taskparam.h
+/home/udesc/Programming/C++/TremCpp/class/threads/taskparam.h
 vector
 -
 algorithm
 -
 task.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/task.h
+/home/udesc/Programming/C++/TremCpp/class/threads/task.h
 sema.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/sema.h
+/home/udesc/Programming/C++/TremCpp/class/threads/sema.h
 thread.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.h
+/home/udesc/Programming/C++/TremCpp/class/threads/thread.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.cpp
+/home/udesc/Programming/C++/TremCpp/class/threads/thread.cpp
 thread.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.h
+/home/udesc/Programming/C++/TremCpp/class/threads/thread.h
 iostream
 -
 unistd.h
@@ -120,43 +120,43 @@ cxxabi.h
 windows.h
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.h
+/home/udesc/Programming/C++/TremCpp/class/threads/thread.h
 pthread.h
 -
 windows.h
 -
 task.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/task.h
+/home/udesc/Programming/C++/TremCpp/class/threads/task.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threadtest.cpp
+/home/udesc/Programming/C++/TremCpp/class/threadtest.cpp
 threadtest.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threadtest.h
+/home/udesc/Programming/C++/TremCpp/class/threadtest.h
 
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threadtest.h
+/home/udesc/Programming/C++/TremCpp/class/threadtest.h
 threads/thread.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.h
+/home/udesc/Programming/C++/TremCpp/class/threads/thread.h
 threads/sema.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/sema.h
+/home/udesc/Programming/C++/TremCpp/class/threads/sema.h
 threads/task.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/task.h
+/home/udesc/Programming/C++/TremCpp/class/threads/task.h
 vector
 -
 iostream
 -
 
-/home/udesc/Downloads/Programming/C++/TremCpp/main.cpp
+/home/udesc/Programming/C++/TremCpp/main.cpp
 iostream
 -
 class/mapatrem.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/mapatrem.h
+/home/udesc/Programming/C++/TremCpp/class/mapatrem.h
 class/threads/thread.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.h
+/home/udesc/Programming/C++/TremCpp/class/threads/thread.h
 vector
 -
 string
 -
 class/threadtest.h
-/home/udesc/Downloads/Programming/C++/TremCpp/class/threadtest.h
+/home/udesc/Programming/C++/TremCpp/class/threadtest.h
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

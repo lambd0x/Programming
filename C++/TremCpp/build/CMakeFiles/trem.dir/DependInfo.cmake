@@ -4,16 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/draw.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/draw.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/linep.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/linep.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/mapatrem.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/mapatrem.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/path.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/path.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/sema.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threads/sema.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/task.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threads/task.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/taskparam.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threads/taskparam.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/threads/thread.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threads/thread.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/class/threadtest.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threadtest.cpp.o"
-  "/home/udesc/Downloads/Programming/C++/TremCpp/main.cpp" "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/main.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/draw.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/draw.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/linep.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/linep.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/mapatrem.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/mapatrem.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/path.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/path.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/threads/sema.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threads/sema.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/threads/task.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threads/task.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/threads/taskparam.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threads/taskparam.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/threads/thread.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threads/thread.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/class/threadtest.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/class/threadtest.cpp.o"
+  "/home/udesc/Programming/C++/TremCpp/main.cpp" "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/trem.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

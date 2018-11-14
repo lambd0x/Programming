@@ -1,4 +1,4 @@
-# Install script for directory: /home/udesc/Downloads/Programming/C++/TremCpp
+# Install script for directory: /home/udesc/Programming/C++/TremCpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,7 +33,7 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/udesc/Downloads/Programming/C++/TremCpp/build/CMakeFiles/CMakeRelink.dir/trem")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/udesc/Programming/C++/TremCpp/build/CMakeFiles/CMakeRelink.dir/trem")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -44,5 +44,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/udesc/Downloads/Programming/C++/TremCpp/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/udesc/Programming/C++/TremCpp/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

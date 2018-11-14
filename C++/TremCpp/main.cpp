@@ -14,7 +14,8 @@
 #define ESClockNO 27
 #define ESClockYE 1048603
 
-using namespace std;
+
+
 
 int main(int argc, char **argv)
 {
@@ -43,7 +44,7 @@ int main(int argc, char **argv)
 
 		if(key == UPlockNO || key == UPlockYE)
 		{
-		//	ThreadTest trem1(1);
+		ThreadTest trem1(1);
 
 			// Trem 1 de Lucerne para Engelberg com avanço direto por Stans
 				for (float p = -1; p <= 1; p += 0.01)
@@ -85,7 +86,7 @@ int main(int argc, char **argv)
 
 		} else if(key == DOWNlockNO || key == DOWNlockYE)
 		{
-		//	ThreadTest trem2(1);
+			ThreadTest trem2(1);
 
 			// Trem 2 de Sarnen para Engelberg com avanço direto por Stans
 				trens.Gate(0);

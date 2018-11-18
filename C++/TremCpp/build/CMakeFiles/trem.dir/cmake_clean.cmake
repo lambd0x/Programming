@@ -11,8 +11,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/trem.dir/class/threadtest.cpp.o"
   "trem.pdb"
   "trem"
-  "trem.pdb"
-  "CMakeFiles/CMakeRelink.dir/trem"
 )
 
 # Per-language clean rules from dependency scanning.

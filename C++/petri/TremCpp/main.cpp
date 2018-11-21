@@ -16,10 +16,18 @@
 #define ESClockNO 27
 #define ESClockYE 1048603
 
+MapaTrem train;
+
 using namespace std;
 
+Mat trem1_vazio;
+Mat trem1_cheio;
+
+Mat trem2_vazio;
+Mat trem2_cheio;
+
 // Identify the number of tokens required per each petri net transition
-vector<int> GetTokensPerTransitions(vector<vector<int>> PRE)
+vector<int> GetTokensPerTransitions(vector<vector<int>> &PRE)
 {
 	vector<int> l(20);
 	int count = 0;
@@ -39,7 +47,7 @@ vector<int> GetTokensPerTransitions(vector<vector<int>> PRE)
 }
 
 // Get hold of the currently triggerable transitions
-vector<int> GetActiveTransitions(vector<int> M0, vector<int> tokensPerTrans, vector<vector<int>> PRE)
+vector<int> GetActiveTransitions(vector<int> &M0, vector<int> &tokensPerTrans, vector<vector<int>> &PRE)
 {
 	vector<int> l{};
 	for (unsigned int j = 0; j < PRE[0].size(); j++)
@@ -67,13 +75,80 @@ vector<int> GetActiveTransitions(vector<int> M0, vector<int> tokensPerTrans, vec
 // Moves the train in accordance to the transition executed
 bool TrainMovesBaby(unsigned int id_trans)
 {
+	bool ok = false;
+	// Train 1 transition set
 	if (id_trans == 1)
 	{
 		// Loads train 1 with people
+		train.SetMatTrain1(trem1_cheio);
 
 		// Fakes the time (1s)
 		Thread::SleepMS(60);
+		//Transition finished
+		ok = true;
+	} else if (id_trans == 2)
+	{
+		bool B1Sensor = false;
+		// Train 1 goes to Lucerne's rail
+		for (float p = -1.0f; ; p += 0.01f)
+		{
+			//Stops the train
+			if(B1Sensor)
+				break;
+
+			train.SetTrain1Pos((-1) * p, 1);
+			Thread::SleepMS(10);
+			if(train.B1())
+				B1Sensor = true;
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain1Pos(0.5f, 1);
+		train.Trem1Txt("Trilhos de Lucerne");
+
+		//Transition finished
+		ok = true;
+	} else if (id_trans == 3)
+	{
+		bool CSensor = false;
+		// Train 1 goes to Stans's rail
+		for (float p = -0.5f; ; p += 0.01f)
+		{
+			//Stops the train
+			if(p == 0)
+				break;
+
+			train.SetTrain1Pos((-1) * p, 0);
+			Thread::SleepMS(10);
+
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain1Pos(0.0f, 0);
+		train.Trem1Txt("Trilhos de Lucerne");
+
+		//Transition finished
+		ok = true;
 	}
+
+	// Train 2 transition set
+	if (id_trans == 10)
+	{
+		// Loads train 2 with people
+		train.SetMatTrain2(trem2_cheio);
+
+		// Fakes the time (1s)
+		Thread::SleepMS(60);
+		//Transition finished
+		ok = true;
+	} else if (id_trans == 12)
+	{
+		// Train 1 goes to Lucerne's rail
+		//Transition finished
+		ok = true;
+	}
+
+
+
+
 
 	/*
 	    // 1)Train 1 is on Lucerne's train station and Train 2 is on Sarnen's train station
@@ -581,32 +656,58 @@ bool TrainMovesBaby(unsigned int id_trans)
 	        break;
 	    }
 	    */
+		return ok;
 }
 
 // Effectively execute the petri transition
-bool ExecuteTrans(unsigned int id_trans, vector<int> M0, vector<vector<int>> PRE, vector<vector<int>> POS)
+bool ExecuteTrans(unsigned int id_trans, vector<int> &M0, vector<vector<int>> &PRE, vector<vector<int>> &POS)
 {
+	bool ok = false;
+
 	// Consume the PRE tokens from M0
 	for (unsigned int i = 0; i < PRE.size(); i++)
 	{
-		if (PRE[i][id_trans] != 0 && M0[i] == PRE[i][id_trans])
+		if (PRE[i][id_trans] != 0 && M0[i] >= PRE[i][id_trans])
 		{
-			M0[i] = 0;
+			M0[i] -= PRE[i][id_trans];
 		}
 	}
-	for (unsigned int i = 0; i < M0.size(); i++)
-		cout << "M0 content " << i << ": " << M0[i] << endl;
+//	for (unsigned int i = 0; i < M0.size(); i++)
+//		cout << "M0 content " << i << ": " << M0[i] << endl;
 
+    cout << "Transition %d has started: " << id_trans<<endl;
 	// Move train
-	TrainMovesBaby(id_trans);
+	if(TrainMovesBaby(id_trans))
+	{
+		cout << "Transition %d has finished: " << id_trans<< endl;
 
-	// Set POS tokens into M0
+		// Set POS tokens into M0
+		for (unsigned int i = 0; i < POS.size(); i++)
+		{
+			M0[i] += POS[i][id_trans];
+		}
+		ok = true;
+	}
+	return ok;
 }
+
+//int train1TransSelect(vector<int> &)
 
 int main(int argc, char **argv)
 {
 	// To have this odd setup compiled: cmake .. (just for the first time over current architecture)
 	// Then: make
+
+	// Define imgs for train1
+	trem1_vazio = imread("img/train1_vazio.png", CV_LOAD_IMAGE_COLOR);
+	trem1_cheio = imread("img/train1_cheio.png", CV_LOAD_IMAGE_COLOR);
+
+	// Define imgs for train2
+	trem2_vazio = imread("img/train2_vazio.png", CV_LOAD_IMAGE_COLOR);
+	trem2_cheio = imread("img/train2_cheio.png", CV_LOAD_IMAGE_COLOR);
+
+	train.SetMatTrain1(trem1_vazio);
+	train.SetMatTrain2(trem2_vazio);
 
 	// M0 of the petri net
 	vector<int> M0
@@ -683,47 +784,64 @@ int main(int argc, char **argv)
 	};                                                                //total: 19
 	// A list with the amount of tokens required to trigger each transition
 	vector<int> tokensPerTrans = GetTokensPerTransitions(PRE);
-	for (unsigned int i = 0; i < tokensPerTrans.size(); i++)
-		cout << "To trigger transition " << i << ": " << tokensPerTrans[i] << endl;
-
-	vector<int> activeTrans = GetActiveTransitions(M0, tokensPerTrans, PRE);
-	for (unsigned int i = 0; i < activeTrans.size(); i++)
-		cout << "Triggerable transition " << i << ": " << activeTrans[i] << endl;
+	//	for (unsigned int i = 0; i < tokensPerTrans.size(); i++)
+	//		cout << "To trigger transition " << i << ": " << tokensPerTrans[i] << endl;
 
 	// Initial defs
-	MapaTrem train;
 	train.SetTrain1Pos(0.9f, 1);
 	train.Trem1Txt("Estacao de Lucerne");
 	train.SetTrain2Pos(0.9f, 2);
 	train.Trem2Txt("Estacao de Sarnen");
 	train.Gate(1);
 
+	// Vector of current triggerable transitions
+	vector<int> activeTrans;
 	// The id of the transition which will be executed currently
 	int id = -1;
+	// Current key stroke
+	int key = -1;
 
 	// Main loop of the system
 	while (1)
 	{
 		// Captures current key stroke
-		int key = train.GetLastKeyAndEmpty();
-		// Key debugger
-		//cout << "Pressionado: " << key << endl;
+		if(key == -1)
+			key = train.GetLastKeyAndEmpty();
 
 		// Checks if M1 has been pressed
-		if (key == UPlockNO || key == UPlockYE || key == UPlockNO2)
+		if(key == UPlockNO || key == UPlockYE || key == UPlockNO2)
 		{
 			id = 1;
 		}
 		// Checks if M2 has been pressed
-		else if (key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
+		else if(key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
 		{
 			id = 10;
 		}
 
 		// Prevents the initial -1 id from getting checked
-		if (id != -1)
+		if(id != -1)
 		{
-			ExecuteTrans(id, M0, PRE, POS);
+			// Displays the current triggerable transitions
+			vector<int> activeTrans = GetActiveTransitions(M0, tokensPerTrans, PRE);
+			cout << "Triggerable transitions:" << endl;
+			for (unsigned int i = 0; i < activeTrans.size(); i++)
+		    	cout << activeTrans[i] << endl;
+			cout << endl;
+
+
+			if(!ExecuteTrans(id, M0, PRE, POS)){
+				cout << "Something went wrong with transition" << id << endl;
+				exit(-1);
+			}
+
+			// Updates the transition set to execute next
+			if(id == 1)
+				id = 2;
+
+			if(id == 10)
+				id = 12;
+
 		}
 
 		// Quits the application
@@ -733,6 +851,8 @@ int main(int argc, char **argv)
 		}
 		// 10ms
 		Thread::SleepMS(10);
+		// No new key stroke
+		key = -1;
 	}//end while
 
 	return 0;

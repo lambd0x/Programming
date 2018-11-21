@@ -90,6 +90,8 @@ public:
 	bool B1();
 	bool B2();
 	bool C();
+	bool SetMatTrain1(Mat &trem1);
+	bool SetMatTrain2(Mat &trem2);
 
 	int GetLastKey();
 	int GetLastKeyAndEmpty();

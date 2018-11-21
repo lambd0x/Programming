@@ -27,6 +27,9 @@ MapaTrem::MapaTrem()
 	trem1 = imread("img/train1.png", CV_LOAD_IMAGE_COLOR);
 	trem2 = imread("img/train2.png", CV_LOAD_IMAGE_COLOR);
 
+
+
+
 	// secao critica
 	trajeto = new Path();
 	trajeto->AddPoint(Point3f(304, 242, 0));
@@ -146,6 +149,22 @@ bool MapaTrem::C()
 	sMapa.Unlock();
 
 	return r;
+}
+
+bool MapaTrem::SetMatTrain1(Mat &trem1)
+{
+	sMapa.Lock();
+	this->trem1 = trem1;
+	sMapa.Unlock();
+	return true;
+}
+
+bool MapaTrem::SetMatTrain2(Mat &trem2)
+{
+		sMapa.Lock();
+		this->trem2 = trem2;
+		sMapa.Unlock();
+		return true;
 }
 
 bool MapaTrem::Sensores(Point3f p1, Point3f p2, bool& a1, bool& a2, bool& b1, bool& b2, bool& c)
@@ -395,8 +414,6 @@ bool MapaTrem::imgAdd(cv::Mat &fundo, cv::Mat &add, int x, int y, Vec3b transpCo
 
 	return true;
 }
-
-
 
 // Task
 bool MapaTrem::Exec()

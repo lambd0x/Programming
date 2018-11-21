@@ -72,13 +72,15 @@ public:
 	int Height();
 
 	bool SetTrain1Pos(float param, int trajeto);
-	std::tuple<float, int> GetTrain1Pos();
+	float GetTrain1Pos();
+	int GetTrain1Traj();
 //	void GetTrem1Pos(float *param, int *trajeto);
 //	void GetTrem1Pos(int *x, int *y);
 	void Trem1Txt(string mensagem);
 
 	bool SetTrain2Pos(float param, int trajeto);
-	std::tuple<float, int> GetTrain2Pos();
+	float GetTrain2Pos();
+	int GetTrain2Traj();
 //	void GetTrem2Pos(double *param, int *trajeto);
 //	void GetTrem2Pos(int *x, int *y);
 	void Trem2Txt(string mensagem);

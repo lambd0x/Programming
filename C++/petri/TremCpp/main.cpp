@@ -16,6 +16,12 @@
 #define ESClockNO 27
 #define ESClockYE 1048603
 
+//Terminal colors
+#define RED         "\x1b[31m"
+#define BLUE        "\x1b[34m"
+#define WHITE       "\x1b[37m"
+#define COLOR_RESET "\x1b[0m"
+
 MapaTrem train;
 
 using namespace std;
@@ -72,591 +78,382 @@ vector<int> GetActiveTransitions(vector<int> &M0, vector<int> &tokensPerTrans, v
 	return l;
 }
 
+// Determines the transition to be executed in regard to train1 or train2 (pressed key)
+int GetTransExec(int pressed, vector<int> &activeTrans, vector<int> &listTrain1, vector<int> &listTrain2)
+{
+	int transition = -1;
+	// Transitions of train1
+	if (pressed == 0)
+	{
+		for (auto trans : activeTrans)
+			for (auto trans2 : listTrain1)
+				if (trans == trans2)
+					transition = trans;
+	}
+	// Transitions of train2
+	else
+	{
+		for (auto trans : activeTrans)
+			for (auto trans2 : listTrain2)
+				if (trans == trans2)
+					transition = trans;
+	}
+	return transition;
+}
+
 // Moves the train in accordance to the transition executed
 bool TrainMovesBaby(unsigned int id_trans)
 {
 	bool ok = false;
-	// Train 1 transition set
+	// Train 1: transitions
 	if (id_trans == 1)
 	{
+		train.Trem1Txt("Carregando trem 1 em Engelberg");
 		// Loads train 1 with people
 		train.SetMatTrain1(trem1_cheio);
-
-		// Fakes the time (1s)
-		Thread::SleepMS(60);
+		// Fakes the loading time
+		Thread::SleepMS(3000);
 		//Transition finished
 		ok = true;
-	} else if (id_trans == 2)
+	}
+	else if (id_trans == 2)
 	{
 		bool B1Sensor = false;
 		// Train 1 goes to Lucerne's rail
-		for (float p = -1.0f; ; p += 0.01f)
+		// Start slowly
+		train.Trem1Txt("Estacao de Lucerne");
+		for (float p = -train.GetTrain1Pos(); p <= -0.85f; p += 0.0005f)
+		{
+			train.SetTrain1Pos((-1) * p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+		}
+		train.Trem1Txt("Trilhos de Lucerne");
+		for (float p = -train.GetTrain1Pos(); ; p += 0.005f)
 		{
 			//Stops the train
-			if(B1Sensor)
+			if (B1Sensor)
 				break;
-
-			train.SetTrain1Pos((-1) * p, 1);
+			train.SetTrain1Pos((-1) * p, train.GetTrain1Traj());
 			Thread::SleepMS(10);
-			if(train.B1())
+			if (train.B1())
 				B1Sensor = true;
 		}
 		//Fix annoying decimal rep of mantissa
-		train.SetTrain1Pos(0.5f, 1);
-		train.Trem1Txt("Trilhos de Lucerne");
-
+		train.SetTrain1Pos(0.5f, train.GetTrain1Traj());
 		//Transition finished
 		ok = true;
-	} else if (id_trans == 3)
+	}
+	else if (id_trans == 3)
 	{
+		// Train 1 goes to Stans's rail (this very transition does nothing because its action is joined with transition 4)
+		//Transition finished
+		ok = true;
+	}
+	else if (id_trans == 4)
+	{
+		train.Trem1Txt("Trilhos de Stans");
 		bool CSensor = false;
-		// Train 1 goes to Stans's rail
-		for (float p = -0.5f; ; p += 0.01f)
+		// Train 1 goes from Lucerne's rail up to Engelberg's station
+		train.Gate(1);
+		// Train 1 goes from Lucerne's rail up to Stans' rail
+		for (float p = -train.GetTrain1Pos(); p <= 0.0f; p += 0.005f)
 		{
-			//Stops the train
-			if(p == 0)
-				break;
-
-			train.SetTrain1Pos((-1) * p, 0);
+			train.SetTrain1Pos((-1) * p, train.GetTrain1Traj());
 			Thread::SleepMS(10);
-
 		}
 		//Fix annoying decimal rep of mantissa
 		train.SetTrain1Pos(0.0f, 0);
+		// Train 1 goes from Stans' rail up to Engelberg's station
+		for (float p = train.GetTrain1Pos(); p <= 0.8; p += 0.005f)
+		{
+			//Stops the train
+			if (CSensor)
+				break;
+			//Stops the train
+			train.SetTrain1Pos(p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+			if (train.C())
+				CSensor = true;
+		}
+		// Decreases Train 1 speed
+		train.Trem1Txt("Estacao de Engelberg");
+		for (float p = train.GetTrain1Pos(); p <= 0.85; p += 0.0005f)
+		{
+			train.SetTrain1Pos(p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain1Pos(0.85f, train.GetTrain1Traj());
+		// Transition finished
+		ok = true;
+	}
+	else if (id_trans == 5)
+	{
+		train.Trem1Txt("Descarregando trem 1 em Engelberg");
+		// Fakes the unloading time
+		Thread::SleepMS(3000);
+		// Train 1 goes to Lucerne's rail
+		// Loads train 1 with people
+		train.SetMatTrain1(trem1_vazio);
+		//Transition finished
+		ok = true;
+	}
+	else if (id_trans == 6)
+	{
+		// Train 1 goes to Stans's rail (this very transition does nothing because its action is joined with transition 7)
+		//Transition finished
+		ok = true;
+	}
+	else if (id_trans == 7)
+	{
+		bool B1Sensor = false;
+		// Train 1 goes from Lucerne's rail up to Engelberg's station
+		train.Gate(1);
+		train.Trem1Txt("Estacao de Engelberg");
+		// Train 1 goes Engelberg's station up to Stans' rail
+		// Slowly starts
+		for (float p = train.GetTrain1Pos(); p >= 0.8; p -= 0.0005f)
+		{
+			train.SetTrain1Pos(p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+		}
+		train.Trem1Txt("Trilhos de Stans");
+		// Max speed
+		for (float p = train.GetTrain1Pos(); p >= 0.0; p -= 0.005f)
+		{
+			train.SetTrain1Pos(p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain1Pos(0.0f, 1);
+		// Train 1 goes from Stans' rail up to Lucerne's rail
+		for (float p = train.GetTrain1Pos(); ; p += 0.005f)
+		{
+			if (B1Sensor)
+				break;
+			train.SetTrain1Pos(p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+			if (train.B1())
+				B1Sensor = true;
+		}
 		train.Trem1Txt("Trilhos de Lucerne");
 
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain1Pos(0.5f, train.GetTrain1Traj());
+		// Transition finished
+		ok = true;
+	}
+	else if (id_trans == 0)
+	{
+		// Train 1 goes back to Lucerne's station
+		bool A1Sensor = false;
+		// Train 1 goes to Lucerne's rail
+		for (float p = train.GetTrain1Pos(); ; p += 0.005f)
+		{
+			//Stops the train
+			if (A1Sensor)
+				break;
+			train.SetTrain1Pos(p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+			if (train.A1())
+				A1Sensor = true;
+		}
+		// Arrives slowly
+		train.Trem1Txt("Estacao de Lucerne");
+		for (float p = train.GetTrain1Pos(); p <= 0.9; p += 0.0005f)
+		{
+			train.SetTrain1Pos(p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain1Pos(0.9f, train.GetTrain1Traj());
 		//Transition finished
 		ok = true;
 	}
+	else if (id_trans == 8)
+	{
+		// Train 1 waits for switch G
+	}
+	else if (id_trans == 18)
+	{
+		// Train 1 takes over switch G
+	}
 
-	// Train 2 transition set
+	// Train 2: transitions
 	if (id_trans == 10)
 	{
+		train.Trem2Txt("Carregando trem 2 em Engelberg");
 		// Loads train 2 with people
 		train.SetMatTrain2(trem2_cheio);
-
-		// Fakes the time (1s)
-		Thread::SleepMS(60);
-		//Transition finished
-		ok = true;
-	} else if (id_trans == 12)
-	{
-		// Train 1 goes to Lucerne's rail
+		// Fakes the loading time
+		Thread::SleepMS(3000);
 		//Transition finished
 		ok = true;
 	}
+	else if (id_trans == 12)
+	{
+		bool B2Sensor = false;
+		// Train 2 goes to Sarnen's rail
+		// Start slowly
+		train.Trem2Txt("Estacao de Sarnen");
+		for (float p = -train.GetTrain2Pos(); p <= -0.85f; p += 0.0005f)
+		{
+			train.SetTrain2Pos((-1) * p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+		}
+		train.Trem2Txt("Trilhos de Sarnen");
+		for (float p = -train.GetTrain2Pos(); ; p += 0.005f)
+		{
+			//Stops the train
+			if (B2Sensor)
+				break;
+			train.SetTrain2Pos((-1) * p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+			if (train.B2())
+				B2Sensor = true;
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain2Pos(0.5f, train.GetTrain2Traj());
+		//Transition finished
+		ok = true;
+	}
+	else if (id_trans == 9)
+	{
+		// Train 2 goes to Stans's rail (this very transition does nothing because its action is joined with transition 14)
+		//Transition finished
+		ok = true;
+	}
+	else if (id_trans == 14)
+	{
+		train.Trem2Txt("Trilhos de Stans");
+		bool CSensor = false;
+		// Train 2 goes from Lucerne's rail up to Engelberg's station
+		train.Gate(0);
+		// Train 2 goes from Lucerne's rail up to Stans' rail
+		for (float p = -train.GetTrain2Pos(); p <= 0.0f; p += 0.005f)
+		{
+			train.SetTrain2Pos((-1) * p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain2Pos(0.0f, 0);
+		// Train 2 goes from Stans' rail up to Engelberg's station
+		for (float p = train.GetTrain2Pos(); p <= 0.8; p += 0.005f)
+		{
+			//Stops the train
+			if (CSensor)
+				break;
+			//Stops the train
+			train.SetTrain2Pos(p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+			if (train.C())
+				CSensor = true;
+		}
+		// Decreases Train 2 speed
+		train.Trem2Txt("Estacao de Engelberg");
+		for (float p = train.GetTrain2Pos(); p <= 0.85; p += 0.0005f)
+		{
+			train.SetTrain2Pos(p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain2Pos(0.85f, train.GetTrain2Traj());
+		// Transition finished
+		ok = true;
+	}
+	else if (id_trans == 15)
+	{
+		train.Trem2Txt("Descarregando trem 2 em Engelberg");
+		// Fakes the unloading time
+		Thread::SleepMS(3000);
+		// Train 2 goes to Lucerne's rail
+		// Loads train 2 with people
+		train.SetMatTrain2(trem2_vazio);
+		//Transition finished
+		ok = true;
+	}
+	else if (id_trans == 16)
+	{
+		// Train 2 goes to Stans's rail (this very transition does nothing because its action is joined with transition 17)
+		//Transition finished
+		ok = true;
+	}
+	else if (id_trans == 17)
+	{
+		bool B2Sensor = false;
+		// Train 2 goes from Sarnen's rail up to Engelberg's station
+		train.Gate(0);
+		train.Trem2Txt("Estacao de Engelberg");
+		// Train 2 goes Engelberg's station up to Stans' rail
+		// Slowly starts
+		for (float p = train.GetTrain2Pos(); p >= 0.8; p -= 0.0005f)
+		{
+			train.SetTrain2Pos(p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+		}
+		train.Trem2Txt("Trilhos de Stans");
+		// Max speed
+		for (float p = train.GetTrain2Pos(); p >= 0.0; p -= 0.005f)
+		{
+			train.SetTrain2Pos(p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain2Pos(0.0f, 2);
+		// Train 2 goes from Stans' rail up to Lucerne's rail
+		for (float p = train.GetTrain2Pos(); ; p += 0.005f)
+		{
+			if (B2Sensor)
+				break;
+			train.SetTrain2Pos(p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+			if (train.B2())
+				B2Sensor = true;
+		}
+		train.Trem2Txt("Trilhos de Sarnen");
 
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain2Pos(0.5f, train.GetTrain2Traj());
+		// Transition finished
+		ok = true;
+	}
+	else if (id_trans == 11)
+	{
+		// Train 2 goes back to Sarnen's station
+		bool A2Sensor = false;
+		// Train 2 goes to Sarnen's rail
+		for (float p = train.GetTrain2Pos(); ; p += 0.005f)
+		{
+			//Stops the train
+			if (A2Sensor)
+				break;
+			train.SetTrain2Pos(p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+			if (train.A2())
+				A2Sensor = true;
+		}
+		// Arrives slowly
+		train.Trem2Txt("Estacao de Sarnen");
+		for (float p = train.GetTrain2Pos(); p <= 0.9; p += 0.0005f)
+		{
+			train.SetTrain2Pos(p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+		}
+		//Fix annoying decimal rep of mantissa
+		train.SetTrain2Pos(0.9f, train.GetTrain2Traj());
+		//Transition finished
+		ok = true;
+	}
+	else if (id_trans == 13)
+	{
+		// Train 2 waits for switch G
+	}
+	else if (id_trans == 19)
+	{
+		// Train 2 takes over switch G
+	}
 
-
-
-
-	/*
-	    // 1)Train 1 is on Lucerne's train station and Train 2 is on Sarnen's train station
-	    if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	            && (pt1p == 1.0f && tt1p == 1) && (pt2p == 1.0f && tt2p == 2)
-	            && (master1 == "1proceeding"))
-	    {
-	        // Train 1 advances up until the end of Lucerne's train rail
-	        for (float p = -1.0f; p <= -0.5f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos((-1) * p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.5f, 1);
-	        train.Trem1Txt("Trilhos de Lucerne");
-	    }
-	    // 2)Train 1 is on Lucerne's train rail and Train 2 is on Sarnen's train station
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 1.0f && tt2p == 2)
-	             && (master1 == "1proceeding"))
-	    {
-	        train.Gate(1);
-	        // Train 1 advances to Stans' train rail (critical area)
-	        for (float p = -0.5f; p <= 0.0f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos((-1) * p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.0f, 0);
-	        train.Trem1Txt("Trilhos de Stans");
-	    }
-	    // 3)Train 1 is on Stan's train rail (critical area) and Train 2 is on Sarnen's train station
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.0f && tt1p == 0) && (pt2p == 1.0f && tt2p == 2)
-	             && (master1 == "1proceeding"))
-	    {
-	        // Train 1 advances to Engelberg's train station (critical area)
-	        for (float p = 0.0f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 0);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(1.0f, 0);
-	        master1 = "1returning";
-	        train.Trem1Txt("Estacao de Engelberg");
-	    }
-	    // 4)Train 1 is on Engelberg's train station (critical area) and Train 2 is on Sarnen's train station
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 1.0f && tt1p == 0) && (pt2p == 1.0f && tt2p == 2)
-	             && (master1 == "1returning"))
-	    {
-	        // Train 1 advances from Engelberg's train station goes back to Stans' train rail
-	        for (float p = 1.0f; p >= 0.0; p -= 0.01)
-	        {
-	            train.SetTrain1Pos(p, 0);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.0f, 0);
-	        train.Trem1Txt("Trilhos de Stans");
-	    }
-	    // 5)Train 1 is on Stans' train rail (critical area) [returning] and Train 2 is on Sarnen's train station
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.0f && tt1p == 0) && (pt2p == 1.0f && tt2p == 2)
-	             && (master1 == "1returning"))
-	    {
-	        // Train 1 advances from Stans' train rail back to Lucerne's train rail
-	        for (float p = 0.0f; p >= -0.5; p -= 0.01)
-	        {
-	            train.SetTrain1Pos((-1) * p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.5f, 1);
-	        train.Trem1Txt("Trilhos de Lucerne");
-	    }
-	    // 6)Train 1 is on Lucerne's train rail [returning] and Train 2 is on Sarnen's train station
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 1.0f && tt2p == 2)
-	             && (master1 == "1returning"))
-	    {
-	        // Train 1 advances from Lucerne's train rail back to Lucerne's train station
-	        for (float p = -0.5f; p >= -1.0f; p -= 0.01)
-	        {
-	            train.SetTrain1Pos((-1) * p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(1.0f, 1);
-	        master1 = "1proceeding";
-	        train.Trem1Txt("Estacao de Lucerne");
-	    }
-	    // 7)Train 2 is on Sarnen's train station and Train 1 is on Lucerne's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 1.0f && tt2p == 2)
-	             && (master2 == "2proceeding"))
-	    {
-	        // Train 2 advances up until the end of Sarnen's train rail
-	        for (float p = -1.0f; p <= -0.5f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos((-1) * p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.5f, 2);
-	        train.Trem2Txt("Trilhos de Sarnen");
-	    }
-	    // 8)Train 2 is on Sarnen's train rail and Train 1 is on Lucerne's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 0.5f && tt2p == 2)
-	             && (master2 == "2proceeding"))
-	    {
-	        train.Gate(0);
-	        // Train 2 advances to Stans' train rail (critical area)
-	        for (float p = -0.5f; p <= 0.0f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos((-1) * p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.0f, 0);
-	        train.Trem2Txt("Trilhos de Stans");
-	    }
-	    // 9)Train 2 is on Stans' train rail (critical area) and Train 1 is on Lucerne's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 0.0f && tt2p == 0)
-	             && (master2 == "2proceeding"))
-	    {
-	        // Train 2 advances to Engelberg's train station (critical area)
-	        for (float p = 0.0f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 0);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(1.0f, 0);
-	        master2 = "2returning";
-	        train.Trem2Txt("Estacao de Engelberg");
-	    }
-	    // 10)Train 2 is on Engelberg's train station (critical area) and Train 1 is on Lucerne's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 1.0f && tt2p == 0)
-	             && (master2 == "2returning"))
-	    {
-	        // Train 2 advances from Engelberg's train station goes back to Stans' train rail
-	        for (float p = 1.0f; p >= 0.0; p -= 0.01)
-	        {
-	            train.SetTrain2Pos(p, 0);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.0f, 0);
-	        train.Trem2Txt("Trilhos de Stans");
-	    }
-	    // 11)Train 2 is on Stans's train rail (critical area) [returning] and Train 1 is on Lucerne's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 0.0f && tt2p == 0)
-	             && (master2 == "2returning"))
-	    {
-	        // Train 2 advances from Stans's train rail back to Sarnen's train rail
-	        for (float p = 0.0f; p >= -0.5; p -= 0.01)
-	        {
-	            train.SetTrain2Pos((-1) * p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.5f, 2);
-	        train.Trem2Txt("Trilhos de Sarnen");
-	    }
-	    // 12)Train 2 is on Sarnen's train rail [returning] and Train 1 is on Lucerne's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 0.5f && tt2p == 2)
-	             && (master2 == "2returning"))
-	    {
-	        // Train 2 advances from Sarnen's train rail back to Sarnen's train station
-	        for (float p = -0.5f; p >= -1.0f; p -= 0.01)
-	        {
-	            train.SetTrain2Pos((-1) * p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(1.0f, 2);
-	        master2 = "2proceeding";
-	        train.Trem2Txt("Estacao de Sarnen");
-	    }
-	    // Combinations of Train 1 and Train 2
-	    // Combos from Train 1:
-	    // 13)Train 2 is on Sarnen's train rail and Train 1 is on Lucerne's train station
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 0.5f && tt2p == 2)
-	             && (master1 == "1proceeding"))
-	    {
-	        // Train 1 advances to Lucerne's train rail
-	        for (float p = -1.0f; p <= -0.5f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos((-1) * p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.5f, 1);
-	        train.Trem1Txt("Trilhos de Lucerne");
-	    }
-	    // 14)Train 2 is on Sarnen's train rail and Train 1 is on Lucerne's train rail
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 0.5f && tt2p == 2)
-	             && (master1 == "1proceeding"))
-	    {
-	        train.Gate(1);
-	        // Train 1 advances to Stans' train rail
-	        for (float p = -0.5f; p <= 0.0f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos((-1) * p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.0f, 0);
-	        train.Trem1Txt("Trilhos de Stans");
-	    }
-	    // 15)Train 2 is on Sarnen's train rail and Train 1 is on Stans' train rail
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.0f && tt1p == 0) && (pt2p == 0.5f && tt2p == 2)
-	             && (master1 == "1proceeding"))
-	    {
-	        // Train 1 advances to Engelberg's train station
-	        for (float p = 0.0f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 0);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(1.0f, 0);
-	        master1 = "1returning";
-	        train.Trem1Txt("Estacao de Engelberg");
-	    }
-	    // 16)Train 2 is on Sarnen's train rail and Train 1 is on Engelberg's train station [returning]
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 1.0f && tt1p == 0) && (pt2p == 0.5f && tt2p == 2)
-	             && (master1 == "1returning"))
-	    {
-	        // Train 1 advances to Stans' train rail
-	        for (float p = 1.0f; p >= 0.0f; p -= 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 0);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.0f, 0);
-	        train.Trem1Txt("Trilhos de Stans");
-	    }
-	    // 17)Train 2 is on Sarnen's train rail and Train 1 is on Stans' train rail [returning]
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.0f && tt1p == 0) && (pt2p == 0.5f && tt2p == 2)
-	             && (master1 == "1returning"))
-	    {
-	        // Train 1 advances to Lucerne's train rail
-	        for (float p = 0.0f; p <= 0.5f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.5f, 1);
-	        train.Trem1Txt("Trilhos de Lucerne");
-	    }
-	    // 18)Train 2 is on Sarnen's train rail and Train 1 is on Lucerne's train rail [returning]
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 0.5f && tt2p == 2)
-	             && (master1 == "1returning"))
-	    {
-	        // Train 1 advances to Lucerne's train station
-	        for (float p = 0.5f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(1.0f, 1);
-	        master1 = "1proceeding";
-	        train.Trem1Txt("Estacao de Lucerne");
-	    }
-	    // 19)Train 2 is on Stans' trail rail and Train 1 is on Lucerne's train station
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 0.0f && tt2p == 0)
-	             && (master1 == "1proceeding"))
-	    {
-	        // Train 1 advances to Lucerne's train rail
-	        for (float p = 1.0f; p >= 0.5f; p -= 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.5f, 1);
-	        train.Trem1Txt("Trilhos de Lucerne");
-	    }
-	    // 20)Train 2 is on Engelberg's trail station and Train 1 is on Lucerne's train station
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 1.0f && tt1p == 1) && (pt2p == 1.0f && tt2p == 0)
-	             && (master1 == "1proceeding"))
-	    {
-	        // Train 1 advances to Lucerne's train rail
-	        for (float p = 1.0f; p >= 0.5f; p -= 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(0.5f, 1);
-	        train.Trem1Txt("Trilhos de Lucerne");
-	    }
-	    // 21)Train 2 is on Stans' train rail and Train 1 is on Lucerne's train rail
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 0.0f && tt2p == 0)
-	             && (master1 == "1returning"))
-	    {
-	        // Train 1 advances to Lucerne's train station
-	        for (float p = 0.5f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(1.0f, 1);
-	        train.Trem1Txt("Estacao de Lucerne");
-	        master1 = "1proceeding";
-	    }
-	    // 22)Train 2 is on Engelberg's train station and Train 1 is on Lucerne's train rail
-	    else if ((key == UPlockNO || key == UPlockYE || key == UPlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 1.0f && tt2p == 0)
-	             && (master1 == "1returning"))
-	    {
-	        // Train 1 advances to Lucerne's train station
-	        for (float p = 0.5f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain1Pos(p, 1);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain1Pos(1.0f, 1);
-	        train.Trem1Txt("Estacao de Lucerne");
-	        master1 = "1proceeding";
-	    }
-	    // Combos from Train 2:
-	    // 23)Train 1 is on Lucerne's train rail and Train 2 is on Sarnen's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 1.0f && tt2p == 2)
-	             && (master2 == "2proceeding"))
-	    {
-	        // Train 2 advances to Sarnen's train rail
-	        for (float p = -1.0f; p <= -0.5f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos((-1) * p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.5f, 2);
-	        train.Trem2Txt("Trilhos de Sarnen");
-	    }
-	    // 24)Train 1 is on Lucerne's train rail and Train 2 is on Sarnen's train rail
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 0.5f && tt2p == 2)
-	             && (master2 == "2proceeding"))
-	    {
-	        train.Gate(0);
-	        // Train 2 advances to Stans' train rail
-	        for (float p = -0.5f; p <= 0.0f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos((-1) * p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.0f, 0);
-	        train.Trem2Txt("Trilhos de Stans");
-	    }
-	    // 25)Train 1 is on Lucerne's train rail and Train 2 is on Stans' train rail
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 0.0f && tt2p == 0)
-	             && (master2 == "2proceeding"))
-	    {
-	        // Train 2 advances to Engelberg's train station
-	        for (float p = 0.0f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 0);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(1.0f, 0);
-	        master2 = "2returning";
-	        train.Trem2Txt("Estacao de Engelberg");
-	    }
-	    // 26)Train 1 is on Lucerne's train rail and Train 2 is on Engelberg's train station [returning]
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 1.0f && tt2p == 0)
-	             && (master2 == "2returning"))
-	    {
-	        // Train 2 advances to Stans' train rail
-	        for (float p = 1.0f; p >= 0.0f; p -= 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 0);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.0f, 0);
-	        train.Trem2Txt("Trilhos de Stans");
-	    }
-	    // 27)Train 1 is on Lucerne's train rail and Train 2 is on Stans' train rail [returning]
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 0.0f && tt2p == 0)
-	             && (master2 == "2returning"))
-	    {
-	        // Train 2 advances to Sarnen's train rail
-	        for (float p = 0.0f; p <= 0.5f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.5f, 2);
-	        train.Trem2Txt("Trilhos de Sarnen");
-	    }
-	    // 28)Train 1 is on Lucerne's train rail and Train 2 is on Stans's train rail [returning]
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 0.5f && tt1p == 1) && (pt2p == 0.5f && tt2p == 2)
-	             && (master2 == "2returning"))
-	    {
-	        // Train 2 advances to Sarnen's train station
-	        for (float p = 0.5f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(1.0f, 2);
-	        master2 = "2proceeding";
-	        train.Trem2Txt("Estacao de Sarnen");
-	    }
-	    // 29)Train 1 is on Stans' trail rail and Train 2 is on Sarnen's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 0.0f && tt1p == 0) && (pt2p == 1.0f && tt2p == 2)
-	             && (master2 == "2proceeding"))
-	    {
-	        // Train 2 advances to Sarnen's train rail
-	        for (float p = 1.0f; p >= 0.5f; p -= 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.5f, 2);
-	        train.Trem2Txt("Trilhos de Sarnen");
-	    }
-	    // 30)Train 1 is on Engelberg's trail station and Train 2 is on Sarnen's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 1.0f && tt1p == 0) && (pt2p == 1.0f && tt2p == 2)
-	             && (master2 == "2proceeding"))
-	    {
-	        // Train 2 advances to Sarnen's train rail
-	        for (float p = 1.0f; p >= 0.5f; p -= 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(0.5f, 2);
-	        train.Trem2Txt("Trilhos de Sarnen");
-	    }
-	    // 31)Train 1 is on Stans's train rail and Train 2 is on Sarnen's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 0.0f && tt1p == 0) && (pt2p == 0.5f && tt2p == 2)
-	             && (master2 == "2returning"))
-	    {
-	        // Train 2 advances to Sarnen's train station
-	        for (float p = 0.5f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(1.0f, 2);
-	        train.Trem2Txt("Estacao de Sarnen");
-	        master2 = "2proceeding";
-	    }
-	    // 32)Train 1 is on Engelberg's train station and Train 2 is on Sarnen's train station
-	    else if ((key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
-	             && (pt1p == 1.0f && tt1p == 0) && (pt2p == 0.5f && tt2p == 2)
-	             && (master2 == "2returning"))
-	    {
-	        // Train 2 advances to Sarnen's train rail
-	        for (float p = 0.5f; p <= 1.0f; p += 0.01f)
-	        {
-	            train.SetTrain2Pos(p, 2);
-	            Thread::SleepMS(10);
-	        }
-	        //Fix annoying decimal rep of mantissa
-	        train.SetTrain2Pos(1.0f, 2);
-	        train.Trem2Txt("Estacao de Sarnen");
-	        master2 = "2proceeding";
-	    }
-	    // 33) Exit cases
-	    else if (key == ESClockNO || key == ESClockYE)
-	    {
-	        break;
-	    }
-	    */
-		return ok;
+	return ok;
 }
 
 // Effectively execute the petri transition
@@ -675,11 +472,11 @@ bool ExecuteTrans(unsigned int id_trans, vector<int> &M0, vector<vector<int>> &P
 //	for (unsigned int i = 0; i < M0.size(); i++)
 //		cout << "M0 content " << i << ": " << M0[i] << endl;
 
-    cout << "Transition %d has started: " << id_trans<<endl;
+	cout << BLUE " Transition " << id_trans << " has started " COLOR_RESET;
 	// Move train
-	if(TrainMovesBaby(id_trans))
+	if (TrainMovesBaby(id_trans))
 	{
-		cout << "Transition %d has finished: " << id_trans<< endl;
+		cout << BLUE " Transition " << id_trans << " has finished\n" COLOR_RESET << endl;
 
 		// Set POS tokens into M0
 		for (unsigned int i = 0; i < POS.size(); i++)
@@ -690,8 +487,6 @@ bool ExecuteTrans(unsigned int id_trans, vector<int> &M0, vector<vector<int>> &P
 	}
 	return ok;
 }
-
-//int train1TransSelect(vector<int> &)
 
 int main(int argc, char **argv)
 {
@@ -784,8 +579,9 @@ int main(int argc, char **argv)
 	};                                                                //total: 19
 	// A list with the amount of tokens required to trigger each transition
 	vector<int> tokensPerTrans = GetTokensPerTransitions(PRE);
-	//	for (unsigned int i = 0; i < tokensPerTrans.size(); i++)
-	//		cout << "To trigger transition " << i << ": " << tokensPerTrans[i] << endl;
+
+	vector<int> listTrain1{0, 1, 2, 3, 4, 5, 6, 7, 8, 18};
+	vector<int> listTrain2{9, 10, 11, 12, 13, 14, 15, 16, 17, 19};
 
 	// Initial defs
 	train.SetTrain1Pos(0.9f, 1);
@@ -797,51 +593,55 @@ int main(int argc, char **argv)
 	// Vector of current triggerable transitions
 	vector<int> activeTrans;
 	// The id of the transition which will be executed currently
-	int id = -1;
+	int id_trans = -1;
 	// Current key stroke
 	int key = -1;
+	// Operator has pressed the key
+	int pressed = -1;
 
 	// Main loop of the system
 	while (1)
 	{
 		// Captures current key stroke
-		if(key == -1)
+		if (key == -1)
 			key = train.GetLastKeyAndEmpty();
 
 		// Checks if M1 has been pressed
-		if(key == UPlockNO || key == UPlockYE || key == UPlockNO2)
+		if (key == UPlockNO || key == UPlockYE || key == UPlockNO2)
 		{
-			id = 1;
+			// Denotes M1 (train 1)
+			pressed = 0;
 		}
 		// Checks if M2 has been pressed
-		else if(key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
+		else if (key == DOWNlockNO || key == DOWNlockYE || key == DOWNlockNO2)
 		{
-			id = 10;
+			// Denotes M2 (train 2)
+			pressed = 1;
 		}
 
 		// Prevents the initial -1 id from getting checked
-		if(id != -1)
+		if (pressed != -1)
 		{
 			// Displays the current triggerable transitions
 			vector<int> activeTrans = GetActiveTransitions(M0, tokensPerTrans, PRE);
-			cout << "Triggerable transitions:" << endl;
+			cout << WHITE "Triggerable transitions: " COLOR_RESET;
 			for (unsigned int i = 0; i < activeTrans.size(); i++)
-		    	cout << activeTrans[i] << endl;
-			cout << endl;
+				cout << activeTrans[i] << " ";
 
+			// Gets the executable transition in accordance to the train
+			id_trans = GetTransExec(pressed, activeTrans, listTrain1, listTrain2);
+			cout << WHITE "Petri net executes transition: " COLOR_RESET << id_trans << endl;
 
-			if(!ExecuteTrans(id, M0, PRE, POS)){
-				cout << "Something went wrong with transition" << id << endl;
+			if (!ExecuteTrans(id_trans, M0, PRE, POS))
+			{
+				cout << RED "Something went wrong with transition: " COLOR_RESET << id_trans << endl;
 				exit(-1);
+				// Prevents train 1 from leaving Lucerne's station without a further M1 press
 			}
-
-			// Updates the transition set to execute next
-			if(id == 1)
-				id = 2;
-
-			if(id == 10)
-				id = 12;
-
+			else if (id_trans == 0)
+				pressed = -1;
+			else if (id_trans == 11)
+				pressed = -1;
 		}
 
 		// Quits the application

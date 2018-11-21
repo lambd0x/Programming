@@ -27,9 +27,6 @@ MapaTrem::MapaTrem()
 	trem1 = imread("img/train1.png", CV_LOAD_IMAGE_COLOR);
 	trem2 = imread("img/train2.png", CV_LOAD_IMAGE_COLOR);
 
-
-
-
 	// secao critica
 	trajeto = new Path();
 	trajeto->AddPoint(Point3f(304, 242, 0));
@@ -161,10 +158,10 @@ bool MapaTrem::SetMatTrain1(Mat &trem1)
 
 bool MapaTrem::SetMatTrain2(Mat &trem2)
 {
-		sMapa.Lock();
-		this->trem2 = trem2;
-		sMapa.Unlock();
-		return true;
+	sMapa.Lock();
+	this->trem2 = trem2;
+	sMapa.Unlock();
+	return true;
 }
 
 bool MapaTrem::Sensores(Point3f p1, Point3f p2, bool& a1, bool& a2, bool& b1, bool& b2, bool& c)
@@ -259,9 +256,14 @@ bool MapaTrem::SetTrain1Pos(float param, int trajeto)
 	return true;
 }
 
-std::tuple<float, int> MapaTrem::GetTrain1Pos()
+float MapaTrem::GetTrain1Pos()
 {
-	return std::make_tuple(t1p, t1traj);
+	return t1p;
+}
+
+int MapaTrem::GetTrain1Traj()
+{
+	return t1traj;
 }
 
 /*
@@ -301,9 +303,14 @@ void MapaTrem::Trem2Txt(string mensagem)
 	sMapa.Unlock();
 }
 
-std::tuple<float, int> MapaTrem::GetTrain2Pos()
+float MapaTrem::GetTrain2Pos()
 {
-	return std::make_tuple(t2p, t2traj);
+	return t2p;
+}
+
+int MapaTrem::GetTrain2Traj()
+{
+	return t2traj;
 }
 
 bool MapaTrem::SetTrain2Pos(float param, int trajeto)

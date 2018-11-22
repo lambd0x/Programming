@@ -32,6 +32,13 @@ Mat trem1_cheio;
 Mat trem2_vazio;
 Mat trem2_cheio;
 
+// Identified button pressed
+int pressed = -1;
+// Transfers the exec control between Train 1 and Train 2
+int controlBack = -1;
+// Informs each train that the other train is waiting
+int waits = -1;
+
 // Identify the number of tokens required per each petri net transition
 vector<int> GetTokensPerTransitions(vector<vector<int>> &PRE)
 {
@@ -91,7 +98,7 @@ int GetTransExec(int pressed, vector<int> &activeTrans, vector<int> &listTrain1,
 					transition = trans;
 	}
 	// Transitions of train2
-	else
+	else if (pressed == 1)
 	{
 		for (auto trans : activeTrans)
 			for (auto trans2 : listTrain2)
@@ -273,10 +280,26 @@ bool TrainMovesBaby(unsigned int id_trans)
 	else if (id_trans == 8)
 	{
 		// Train 1 waits for switch G
+		// Stop slowly
+		train.Trem1Txt("Trilhos de Lucerne");
+		for (float p = -train.GetTrain1Pos(); p <= -0.4f; p += 0.0005f)
+		{
+			train.SetTrain1Pos((-1) *p, train.GetTrain1Traj());
+			Thread::SleepMS(10);
+		}
+		// Informs Train 2
+		waits = 0;
+		// Transfer to Train 2
+		controlBack = 1;
+		// Transition finished
+		ok = true;
 	}
 	else if (id_trans == 18)
 	{
 		// Train 1 takes over switch G
+		// Transition left empty because it is completed by transition 4
+		// Transition finished
+		ok = true;
 	}
 
 	// Train 2: transitions
@@ -414,6 +437,7 @@ bool TrainMovesBaby(unsigned int id_trans)
 
 		//Fix annoying decimal rep of mantissa
 		train.SetTrain2Pos(0.5f, train.GetTrain2Traj());
+
 		// Transition finished
 		ok = true;
 	}
@@ -447,10 +471,29 @@ bool TrainMovesBaby(unsigned int id_trans)
 	else if (id_trans == 13)
 	{
 		// Train 2 waits for switch G
+		// Stop slowly
+		train.Trem2Txt("Trilhos de Sarnen");
+		for (float p = -train.GetTrain2Pos(); p <= -0.4f; p += 0.0005f)
+		{
+			train.SetTrain2Pos((-1) *p, train.GetTrain2Traj());
+			Thread::SleepMS(10);
+		}
+		// Informs Train 1
+		waits = 1;
+		// Transfer to Train 1
+		controlBack = 0;
+		// Transition finished
+		ok = true;
+
+		// Transition finished
+		ok = true;
 	}
 	else if (id_trans == 19)
 	{
 		// Train 2 takes over switch G
+		// Transition left empty because it is completed by transition 19
+		// Transition finished
+		ok = true;
 	}
 
 	return ok;
@@ -597,7 +640,7 @@ int main(int argc, char **argv)
 	// Current key stroke
 	int key = -1;
 	// Operator has pressed the key
-	int pressed = -1;
+	pressed = -1;
 
 	// Main loop of the system
 	while (1)
@@ -638,10 +681,30 @@ int main(int argc, char **argv)
 				exit(-1);
 				// Prevents train 1 from leaving Lucerne's station without a further M1 press
 			}
-			else if (id_trans == 0)
+			else if (id_trans == 0 && controlBack == -1 && waits == -1)
 				pressed = -1;
-			else if (id_trans == 11)
+			else if (id_trans == 11 && controlBack == -1 && waits == -1)
 				pressed = -1;
+			else if (controlBack == 1)
+			{
+				controlBack = -1;
+				pressed = 1;
+			}
+			else if (controlBack == 0)
+			{
+				controlBack = -1;
+				pressed = 0;
+			}
+			else if (id_trans == 11 && waits == 0)
+			{
+				waits = -1;
+				pressed = 0;
+			}
+			else if (id_trans == 0 && waits == 1)
+			{
+				waits = -1;
+				pressed = 1;
+			}
 		}
 
 		// Quits the application

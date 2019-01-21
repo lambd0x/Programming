@@ -1,0 +1,2517 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><pnml>
+<net id="Net-One" type="P/T net">
+<token id="Default" enabled="true" red="0" green="0" blue="0"/>
+<place id="Estacao Engelberg">
+<graphics>
+<position x="1050.0" y="555.0"/>
+</graphics>
+<name>
+<value>Estacao Engelberg</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Estacao Lucerne">
+<graphics>
+<position x="120.0" y="195.0"/>
+</graphics>
+<name>
+<value>Estacao Lucerne</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Estacao Sarnen">
+<graphics>
+<position x="120.0" y="930.0"/>
+</graphics>
+<name>
+<value>Estacao Sarnen</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Switch G para Lucerne">
+<graphics>
+<position x="975.0" y="135.0"/>
+</graphics>
+<name>
+<value>Switch G para Lucerne</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Switch G para Sarnen">
+<graphics>
+<position x="1005.0" y="993.75"/>
+</graphics>
+<name>
+<value>Switch G para Sarnen</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem1 cheio">
+<graphics>
+<position x="120.0" y="495.0"/>
+</graphics>
+<name>
+<value>Trem1 cheio</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem1 direita">
+<graphics>
+<position x="495.0" y="495.0"/>
+</graphics>
+<name>
+<value>Trem1 direita</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem1 esquerda">
+<graphics>
+<position x="315.0" y="495.0"/>
+</graphics>
+<name>
+<value>Trem1 esquerda</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem1 parado">
+<graphics>
+<position x="405.0" y="495.0"/>
+</graphics>
+<name>
+<value>Trem1 parado</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem1 vazio">
+<graphics>
+<position x="210.0" y="495.0"/>
+</graphics>
+<name>
+<value>Trem1 vazio</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem2 cheio">
+<graphics>
+<position x="120.0" y="630.0"/>
+</graphics>
+<name>
+<value>Trem2 cheio</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem2 direita">
+<graphics>
+<position x="495.0" y="630.0"/>
+</graphics>
+<name>
+<value>Trem2 direita</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem2 esquerda">
+<graphics>
+<position x="315.0" y="630.0"/>
+</graphics>
+<name>
+<value>Trem2 esquerda</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem2 parado">
+<graphics>
+<position x="405.0" y="630.0"/>
+</graphics>
+<name>
+<value>Trem2 parado</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trem2 vazio">
+<graphics>
+<position x="210.0" y="630.0"/>
+</graphics>
+<name>
+<value>Trem2 vazio</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trilhos de Lucerne">
+<graphics>
+<position x="315.0" y="45.0"/>
+</graphics>
+<name>
+<value>Trilhos de Lucerne</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trilhos de Sarnen">
+<graphics>
+<position x="300.0" y="1080.0"/>
+</graphics>
+<name>
+<value>Trilhos de Sarnen</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Trilhos de Stans">
+<graphics>
+<position x="735.0" y="555.0"/>
+</graphics>
+<name>
+<value>Trilhos de Stans</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="Uso do switch G">
+<graphics>
+<position x="600.0" y="555.0"/>
+</graphics>
+<name>
+<value>Uso do switch G</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<transition id="Chega em Lucerne">
+<graphics>
+<position x="120.0" y="45.0"/>
+</graphics>
+<name>
+<value>Chega em Lucerne</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Chega em Sarnen">
+<graphics>
+<position x="120.0" y="1080.0"/>
+</graphics>
+<name>
+<value>Chega em Sarnen</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Eche trem2">
+<graphics>
+<position x="120.0" y="780.0"/>
+</graphics>
+<name>
+<value>Eche trem2</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Enche trem1">
+<graphics>
+<position x="120.0" y="330.0"/>
+</graphics>
+<name>
+<value>Enche trem1</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Esvaziou trem1">
+<graphics>
+<position x="1050.0" y="390.0"/>
+</graphics>
+<name>
+<value>Esvaziou trem1</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Esvaziou trem2">
+<graphics>
+<position x="1050.0" y="697.5"/>
+</graphics>
+<name>
+<value>Esvaziou trem2</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Ida ate trilhos de Sarnen">
+<graphics>
+<position x="300.0" y="780.0"/>
+</graphics>
+<name>
+<value>Ida ate trilhos de Sarnen</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Ida ate trilhos Lucerne">
+<graphics>
+<position x="315.0" y="330.0"/>
+</graphics>
+<name>
+<value>Ida ate trilhos Lucerne</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Lucerne aguarda switch G">
+<graphics>
+<position x="450.0" y="243.75"/>
+</graphics>
+<name>
+<value>Lucerne aguarda switch G</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Lucerne chega em Engelberg">
+<graphics>
+<position x="900.0" y="435.0"/>
+</graphics>
+<name>
+<value>Lucerne chega em Engelberg</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Lucerne deixou trilhos de Stans">
+<graphics>
+<position x="915.0" y="195.0"/>
+</graphics>
+<name>
+<value>Lucerne deixou trilhos de Stans</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Lucerne sob trilhos Stans">
+<graphics>
+<position x="735.0" y="45.0"/>
+</graphics>
+<name>
+<value>Lucerne sob trilhos Stans</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Lucerne toma switch G">
+<graphics>
+<position x="450.0" y="135.0"/>
+</graphics>
+<name>
+<value>Lucerne toma switch G</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Sarnen aguarda switch G">
+<graphics>
+<position x="435.0" y="870.0"/>
+</graphics>
+<name>
+<value>Sarnen aguarda switch G</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Sarnen chega em Engelberg">
+<graphics>
+<position x="900.0" y="652.5"/>
+</graphics>
+<name>
+<value>Sarnen chega em Engelberg</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Sarnen deixou trilhos de Stans">
+<graphics>
+<position x="918.75" y="945.0"/>
+</graphics>
+<name>
+<value>Sarnen deixou trilhos de Stans</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Sarnen sob trilhos Stans">
+<graphics>
+<position x="735.0" y="1080.0"/>
+</graphics>
+<name>
+<value>Sarnen sob trilhos Stans</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Sarnen toma switch G">
+<graphics>
+<position x="435.0" y="990.0"/>
+</graphics>
+<name>
+<value>Sarnen toma switch G</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Trem1 ida ate trilhos Stans">
+<graphics>
+<position x="900.0" y="495.0"/>
+</graphics>
+<name>
+<value>Trem1 ida ate trilhos Stans</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="Trem2 ida ate trilhos Stans">
+<graphics>
+<position x="900.0" y="585.0"/>
+</graphics>
+<name>
+<value>Trem2 ida ate trilhos Stans</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<arc id="Chega em Lucerne to Estacao Lucerne" source="Chega em Lucerne" target="Estacao Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="72" curvePoint="false"/>
+<arcpath id="001" x="132" y="192" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Chega em Lucerne to Trem1 parado" source="Chega em Lucerne" target="Trem1 parado">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="136" y="62" curvePoint="false"/>
+<arcpath id="001" x="409" y="494" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Chega em Lucerne to Trem1 vazio" source="Chega em Lucerne" target="Trem1 vazio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="72" curvePoint="false"/>
+<arcpath id="001" x="218" y="492" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Chega em Sarnen to Estacao Sarnen" source="Chega em Sarnen" target="Estacao Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="1077" curvePoint="false"/>
+<arcpath id="001" x="132" y="956" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Chega em Sarnen to Trem2 parado" source="Chega em Sarnen" target="Trem2 parado">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="137" y="1087" curvePoint="false"/>
+<arcpath id="001" x="409" y="654" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Chega em Sarnen to Trem2 vazio" source="Chega em Sarnen" target="Trem2 vazio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="1077" curvePoint="false"/>
+<arcpath id="001" x="218" y="656" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Eche trem2 to Estacao Sarnen" source="Eche trem2" target="Estacao Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="807" curvePoint="false"/>
+<arcpath id="001" x="132" y="927" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Eche trem2 to Trem2 cheio" source="Eche trem2" target="Trem2 cheio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="777" curvePoint="false"/>
+<arcpath id="001" x="132" y="656" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Enche trem1 to Estacao Lucerne" source="Enche trem1" target="Estacao Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="327" curvePoint="false"/>
+<arcpath id="001" x="132" y="221" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Enche trem1 to Trem1 cheio" source="Enche trem1" target="Trem1 cheio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="357" curvePoint="false"/>
+<arcpath id="001" x="132" y="492" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Estacao Engelberg to Esvaziou trem1" source="Estacao Engelberg" target="Esvaziou trem1">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1062" y="552" curvePoint="false"/>
+<arcpath id="001" x="1062" y="417" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Estacao Engelberg to Esvaziou trem2" source="Estacao Engelberg" target="Esvaziou trem2">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1062" y="581" curvePoint="false"/>
+<arcpath id="001" x="1062" y="694" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Estacao Engelberg to Trem1 ida ate trilhos Stans" source="Estacao Engelberg" target="Trem1 ida ate trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1048" y="561" curvePoint="false"/>
+<arcpath id="001" x="916" y="507" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Estacao Engelberg to Trem2 ida ate trilhos Stans" source="Estacao Engelberg" target="Trem2 ida ate trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1047" y="570" curvePoint="false"/>
+<arcpath id="001" x="916" y="597" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Estacao Lucerne to Enche trem1" source="Estacao Lucerne" target="Enche trem1">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="221" curvePoint="false"/>
+<arcpath id="001" x="132" y="327" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Estacao Lucerne to Ida ate trilhos Lucerne" source="Estacao Lucerne" target="Ida ate trilhos Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="144" y="215" curvePoint="false"/>
+<arcpath id="001" x="322" y="336" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Estacao Sarnen to Eche trem2" source="Estacao Sarnen" target="Eche trem2">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="132" y="927" curvePoint="false"/>
+<arcpath id="001" x="132" y="807" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Estacao Sarnen to Ida ate trilhos de Sarnen" source="Estacao Sarnen" target="Ida ate trilhos de Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="143" y="932" curvePoint="false"/>
+<arcpath id="001" x="306" y="800" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Esvaziou trem1 to Estacao Engelberg" source="Esvaziou trem1" target="Estacao Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1062" y="417" curvePoint="false"/>
+<arcpath id="001" x="1062" y="552" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Esvaziou trem1 to Switch G para Lucerne" source="Esvaziou trem1" target="Switch G para Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1062" y="387" curvePoint="false"/>
+<arcpath id="001" x="991" y="161" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Esvaziou trem1 to Trem1 vazio" source="Esvaziou trem1" target="Trem1 vazio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1056" y="407" curvePoint="false"/>
+<arcpath id="001" x="236" y="505" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Esvaziou trem2 to Estacao Engelberg" source="Esvaziou trem2" target="Estacao Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1062" y="694" curvePoint="false"/>
+<arcpath id="001" x="1062" y="581" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Esvaziou trem2 to Switch G para Sarnen" source="Esvaziou trem2" target="Switch G para Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1062" y="724" curvePoint="false"/>
+<arcpath id="001" x="1019" y="990" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Esvaziou trem2 to Trem2 vazio" source="Esvaziou trem2" target="Trem2 vazio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1057" y="705" curvePoint="false"/>
+<arcpath id="001" x="236" y="643" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Ida ate trilhos de Sarnen to Trem2 cheio" source="Ida ate trilhos de Sarnen" target="Trem2 cheio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="307" y="786" curvePoint="false"/>
+<arcpath id="001" x="143" y="651" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Ida ate trilhos de Sarnen to Trem2 direita" source="Ida ate trilhos de Sarnen" target="Trem2 direita">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="316" y="797" curvePoint="false"/>
+<arcpath id="001" x="495" y="651" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Ida ate trilhos de Sarnen to Trilhos de Sarnen" source="Ida ate trilhos de Sarnen" target="Trilhos de Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="312" y="807" curvePoint="false"/>
+<arcpath id="001" x="312" y="1077" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Ida ate trilhos Lucerne to Trem1 cheio" source="Ida ate trilhos Lucerne" target="Trem1 cheio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="321" y="343" curvePoint="false"/>
+<arcpath id="001" x="143" y="497" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Ida ate trilhos Lucerne to Trem1 direita" source="Ida ate trilhos Lucerne" target="Trem1 direita">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="331" y="342" curvePoint="false"/>
+<arcpath id="001" x="496" y="496" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Ida ate trilhos Lucerne to Trilhos de Lucerne" source="Ida ate trilhos Lucerne" target="Trilhos de Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="327" y="327" curvePoint="false"/>
+<arcpath id="001" x="327" y="71" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne aguarda switch G to Switch G para Sarnen" source="Lucerne aguarda switch G" target="Switch G para Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="467" y="251" curvePoint="false"/>
+<arcpath id="001" x="1008" y="993" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne aguarda switch G to Trem1 parado" source="Lucerne aguarda switch G" target="Trem1 parado">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="462" y="270" curvePoint="false"/>
+<arcpath id="001" x="419" y="492" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne aguarda switch G to Trilhos de Lucerne" source="Lucerne aguarda switch G" target="Trilhos de Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="456" y="261" curvePoint="false"/>
+<arcpath id="001" x="335" y="69" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne chega em Engelberg to Estacao Engelberg" source="Lucerne chega em Engelberg" target="Estacao Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="916" y="447" curvePoint="false"/>
+<arcpath id="001" x="1050" y="557" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne chega em Engelberg to Switch G para Lucerne" source="Lucerne chega em Engelberg" target="Switch G para Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="912" y="432" curvePoint="false"/>
+<arcpath id="001" x="983" y="161" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne chega em Engelberg to Trem1 parado" source="Lucerne chega em Engelberg" target="Trem1 parado">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="907" y="441" curvePoint="false"/>
+<arcpath id="001" x="431" y="505" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne deixou trilhos de Stans to Trem1 vazio" source="Lucerne deixou trilhos de Stans" target="Trem1 vazio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="922" y="204" curvePoint="false"/>
+<arcpath id="001" x="235" y="501" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne deixou trilhos de Stans to Trilhos de Lucerne" source="Lucerne deixou trilhos de Stans" target="Trilhos de Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="922" y="198" curvePoint="false"/>
+<arcpath id="001" x="341" y="60" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne deixou trilhos de Stans to Uso do switch G" source="Lucerne deixou trilhos de Stans" target="Uso do switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="921" y="216" curvePoint="false"/>
+<arcpath id="001" x="621" y="555" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne sob trilhos Stans to Switch G para Lucerne" source="Lucerne sob trilhos Stans" target="Switch G para Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="751" y="57" curvePoint="false"/>
+<arcpath id="001" x="972" y="141" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne sob trilhos Stans to Trem1 cheio" source="Lucerne sob trilhos Stans" target="Trem1 cheio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="741" y="58" curvePoint="false"/>
+<arcpath id="001" x="144" y="498" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne sob trilhos Stans to Trem1 direita" source="Lucerne sob trilhos Stans" target="Trem1 direita">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="747" y="72" curvePoint="false"/>
+<arcpath id="001" x="514" y="493" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne sob trilhos Stans to Trilhos de Stans" source="Lucerne sob trilhos Stans" target="Trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="747" y="72" curvePoint="false"/>
+<arcpath id="001" x="747" y="552" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne toma switch G to Switch G para Lucerne" source="Lucerne toma switch G" target="Switch G para Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="467" y="142" curvePoint="false"/>
+<arcpath id="001" x="972" y="146" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne toma switch G to Trem1 direita" source="Lucerne toma switch G" target="Trem1 direita">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="462" y="162" curvePoint="false"/>
+<arcpath id="001" x="505" y="492" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Lucerne toma switch G to Trilhos de Stans" source="Lucerne toma switch G" target="Trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="466" y="152" curvePoint="false"/>
+<arcpath id="001" x="738" y="554" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen aguarda switch G to Switch G para Lucerne" source="Sarnen aguarda switch G" target="Switch G para Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="452" y="877" curvePoint="false"/>
+<arcpath id="001" x="978" y="159" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen aguarda switch G to Trem2 parado" source="Sarnen aguarda switch G" target="Trem2 parado">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="447" y="867" curvePoint="false"/>
+<arcpath id="001" x="419" y="656" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen aguarda switch G to Trilhos de Sarnen" source="Sarnen aguarda switch G" target="Trilhos de Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="442" y="877" curvePoint="false"/>
+<arcpath id="001" x="319" y="1079" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen chega em Engelberg to Estacao Engelberg" source="Sarnen chega em Engelberg" target="Estacao Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="916" y="664" curvePoint="false"/>
+<arcpath id="001" x="1049" y="575" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen chega em Engelberg to Switch G para Sarnen" source="Sarnen chega em Engelberg" target="Switch G para Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="912" y="679" curvePoint="false"/>
+<arcpath id="001" x="1012" y="991" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen chega em Engelberg to Trem2 parado" source="Sarnen chega em Engelberg" target="Trem2 parado">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="906" y="673" curvePoint="false"/>
+<arcpath id="001" x="431" y="642" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen deixou trilhos de Stans to Trem2 vazio" source="Sarnen deixou trilhos de Stans" target="Trem2 vazio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="925" y="954" curvePoint="false"/>
+<arcpath id="001" x="235" y="648" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen deixou trilhos de Stans to Trilhos de Sarnen" source="Sarnen deixou trilhos de Stans" target="Trilhos de Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="925" y="966" curvePoint="false"/>
+<arcpath id="001" x="326" y="1088" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen deixou trilhos de Stans to Uso do switch G" source="Sarnen deixou trilhos de Stans" target="Uso do switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="926" y="948" curvePoint="false"/>
+<arcpath id="001" x="621" y="578" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen sob trilhos Stans to Switch G para Sarnen" source="Sarnen sob trilhos Stans" target="Switch G para Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="751" y="1092" curvePoint="false"/>
+<arcpath id="001" x="1002" y="1010" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen sob trilhos Stans to Trem2 cheio" source="Sarnen sob trilhos Stans" target="Trem2 cheio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="742" y="1086" curvePoint="false"/>
+<arcpath id="001" x="144" y="650" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen sob trilhos Stans to Trem2 direita" source="Sarnen sob trilhos Stans" target="Trem2 direita">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="747" y="1077" curvePoint="false"/>
+<arcpath id="001" x="514" y="655" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen sob trilhos Stans to Trilhos de Stans" source="Sarnen sob trilhos Stans" target="Trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="747" y="1077" curvePoint="false"/>
+<arcpath id="001" x="747" y="582" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen toma switch G to Switch G para Sarnen" source="Sarnen toma switch G" target="Switch G para Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="451" y="1007" curvePoint="false"/>
+<arcpath id="001" x="1002" y="1005" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen toma switch G to Trem2 direita" source="Sarnen toma switch G" target="Trem2 direita">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="447" y="987" curvePoint="false"/>
+<arcpath id="001" x="504" y="656" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Sarnen toma switch G to Trilhos de Stans" source="Sarnen toma switch G" target="Trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="452" y="997" curvePoint="false"/>
+<arcpath id="001" x="738" y="579" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Lucerne to Esvaziou trem1" source="Switch G para Lucerne" target="Esvaziou trem1">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="991" y="161" curvePoint="false"/>
+<arcpath id="001" x="1062" y="387" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Lucerne to Lucerne chega em Engelberg" source="Switch G para Lucerne" target="Lucerne chega em Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="983" y="161" curvePoint="false"/>
+<arcpath id="001" x="912" y="432" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Lucerne to Lucerne deixou trilhos de Stans" source="Switch G para Lucerne" target="Lucerne deixou trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="976" y="158" curvePoint="false"/>
+<arcpath id="001" x="931" y="207" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Lucerne to Sarnen aguarda switch G" source="Switch G para Lucerne" target="Sarnen aguarda switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="978" y="159" curvePoint="false"/>
+<arcpath id="001" x="451" y="887" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Lucerne to Trem1 ida ate trilhos Stans" source="Switch G para Lucerne" target="Trem1 ida ate trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="983" y="161" curvePoint="false"/>
+<arcpath id="001" x="912" y="492" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Sarnen to Esvaziou trem2" source="Switch G para Sarnen" target="Esvaziou trem2">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1019" y="990" curvePoint="false"/>
+<arcpath id="001" x="1062" y="724" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Sarnen to Lucerne aguarda switch G" source="Switch G para Sarnen" target="Lucerne aguarda switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1008" y="993" curvePoint="false"/>
+<arcpath id="001" x="466" y="261" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Sarnen to Sarnen chega em Engelberg" source="Switch G para Sarnen" target="Sarnen chega em Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1012" y="991" curvePoint="false"/>
+<arcpath id="001" x="912" y="679" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Sarnen to Sarnen deixou trilhos de Stans" source="Switch G para Sarnen" target="Sarnen deixou trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1004" y="998" curvePoint="false"/>
+<arcpath id="001" x="935" y="957" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Switch G para Sarnen to Trem2 ida ate trilhos Stans" source="Switch G para Sarnen" target="Trem2 ida ate trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="1013" y="991" curvePoint="false"/>
+<arcpath id="001" x="912" y="612" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 cheio to Esvaziou trem1" source="Trem1 cheio" target="Esvaziou trem1">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="146" y="505" curvePoint="false"/>
+<arcpath id="001" x="1057" y="397" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 cheio to Ida ate trilhos Lucerne" source="Trem1 cheio" target="Ida ate trilhos Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="143" y="497" curvePoint="false"/>
+<arcpath id="001" x="321" y="350" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 cheio to Lucerne sob trilhos Stans" source="Trem1 cheio" target="Lucerne sob trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="144" y="498" curvePoint="false"/>
+<arcpath id="001" x="741" y="65" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 direita to Lucerne aguarda switch G" source="Trem1 direita" target="Lucerne aguarda switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="504" y="492" curvePoint="false"/>
+<arcpath id="001" x="462" y="270" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 direita to Lucerne chega em Engelberg" source="Trem1 direita" target="Lucerne chega em Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="521" y="504" curvePoint="false"/>
+<arcpath id="001" x="906" y="448" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 direita to Lucerne sob trilhos Stans" source="Trem1 direita" target="Lucerne sob trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="514" y="493" curvePoint="false"/>
+<arcpath id="001" x="747" y="72" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 esquerda to Chega em Lucerne" source="Trem1 esquerda" target="Chega em Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="320" y="493" curvePoint="false"/>
+<arcpath id="001" x="132" y="72" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 ida ate trilhos Stans to Switch G para Lucerne" source="Trem1 ida ate trilhos Stans" target="Switch G para Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="912" y="492" curvePoint="false"/>
+<arcpath id="001" x="983" y="161" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 ida ate trilhos Stans to Trem1 esquerda" source="Trem1 ida ate trilhos Stans" target="Trem1 esquerda">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="907" y="497" curvePoint="false"/>
+<arcpath id="001" x="341" y="506" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 ida ate trilhos Stans to Trem1 vazio" source="Trem1 ida ate trilhos Stans" target="Trem1 vazio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="907" y="502" curvePoint="false"/>
+<arcpath id="001" x="236" y="506" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 ida ate trilhos Stans to Trilhos de Stans" source="Trem1 ida ate trilhos Stans" target="Trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="906" y="517" curvePoint="false"/>
+<arcpath id="001" x="761" y="562" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 parado to Ida ate trilhos Lucerne" source="Trem1 parado" target="Ida ate trilhos Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="409" y="494" curvePoint="false"/>
+<arcpath id="001" x="327" y="357" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 parado to Lucerne toma switch G" source="Trem1 parado" target="Lucerne toma switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="418" y="492" curvePoint="false"/>
+<arcpath id="001" x="462" y="162" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 parado to Trem1 ida ate trilhos Stans" source="Trem1 parado" target="Trem1 ida ate trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="431" y="507" curvePoint="false"/>
+<arcpath id="001" x="906" y="507" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 vazio to Chega em Lucerne" source="Trem1 vazio" target="Chega em Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="218" y="492" curvePoint="false"/>
+<arcpath id="001" x="132" y="72" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 vazio to Enche trem1" source="Trem1 vazio" target="Enche trem1">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="214" y="494" curvePoint="false"/>
+<arcpath id="001" x="132" y="357" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 vazio to Lucerne deixou trilhos de Stans" source="Trem1 vazio" target="Lucerne deixou trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="235" y="501" curvePoint="false"/>
+<arcpath id="001" x="921" y="210" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem1 vazio to Trem1 ida ate trilhos Stans" source="Trem1 vazio" target="Trem1 ida ate trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="236" y="507" curvePoint="false"/>
+<arcpath id="001" x="906" y="512" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 cheio to Esvaziou trem2" source="Trem2 cheio" target="Esvaziou trem2">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="146" y="643" curvePoint="false"/>
+<arcpath id="001" x="1056" y="715" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 cheio to Ida ate trilhos de Sarnen" source="Trem2 cheio" target="Ida ate trilhos de Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="143" y="651" curvePoint="false"/>
+<arcpath id="001" x="306" y="793" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 cheio to Sarnen sob trilhos Stans" source="Trem2 cheio" target="Sarnen sob trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="144" y="650" curvePoint="false"/>
+<arcpath id="001" x="741" y="1093" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 direita to Sarnen aguarda switch G" source="Trem2 direita" target="Sarnen aguarda switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="503" y="656" curvePoint="false"/>
+<arcpath id="001" x="447" y="867" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 direita to Sarnen chega em Engelberg" source="Trem2 direita" target="Sarnen chega em Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="521" y="643" curvePoint="false"/>
+<arcpath id="001" x="906" y="666" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 direita to Sarnen sob trilhos Stans" source="Trem2 direita" target="Sarnen sob trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="514" y="655" curvePoint="false"/>
+<arcpath id="001" x="747" y="1077" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 esquerda to Chega em Sarnen" source="Trem2 esquerda" target="Chega em Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="320" y="655" curvePoint="false"/>
+<arcpath id="001" x="132" y="1077" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 ida ate trilhos Stans to Switch G para Sarnen" source="Trem2 ida ate trilhos Stans" target="Switch G para Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="912" y="612" curvePoint="false"/>
+<arcpath id="001" x="1013" y="991" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 ida ate trilhos Stans to Trem2 esquerda" source="Trem2 ida ate trilhos Stans" target="Trem2 esquerda">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="906" y="602" curvePoint="false"/>
+<arcpath id="001" x="341" y="640" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 ida ate trilhos Stans to Trem2 vazio" source="Trem2 ida ate trilhos Stans" target="Trem2 vazio">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="907" y="592" curvePoint="false"/>
+<arcpath id="001" x="236" y="640" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 ida ate trilhos Stans to Trilhos de Stans" source="Trem2 ida ate trilhos Stans" target="Trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="907" y="587" curvePoint="false"/>
+<arcpath id="001" x="761" y="568" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 parado to Ida ate trilhos de Sarnen" source="Trem2 parado" target="Ida ate trilhos de Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="408" y="654" curvePoint="false"/>
+<arcpath id="001" x="317" y="787" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 parado to Sarnen toma switch G" source="Trem2 parado" target="Sarnen toma switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="418" y="656" curvePoint="false"/>
+<arcpath id="001" x="447" y="987" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 parado to Trem2 ida ate trilhos Stans" source="Trem2 parado" target="Trem2 ida ate trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="431" y="640" curvePoint="false"/>
+<arcpath id="001" x="906" y="607" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 vazio to Chega em Sarnen" source="Trem2 vazio" target="Chega em Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="218" y="656" curvePoint="false"/>
+<arcpath id="001" x="132" y="1077" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 vazio to Eche trem2" source="Trem2 vazio" target="Eche trem2">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="214" y="655" curvePoint="false"/>
+<arcpath id="001" x="136" y="792" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 vazio to Sarnen deixou trilhos de Stans" source="Trem2 vazio" target="Sarnen deixou trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="235" y="648" curvePoint="false"/>
+<arcpath id="001" x="925" y="960" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trem2 vazio to Trem2 ida ate trilhos Stans" source="Trem2 vazio" target="Trem2 ida ate trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="236" y="641" curvePoint="false"/>
+<arcpath id="001" x="906" y="597" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Lucerne to Chega em Lucerne" source="Trilhos de Lucerne" target="Chega em Lucerne">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="312" y="56" curvePoint="false"/>
+<arcpath id="001" x="137" y="52" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Lucerne to Lucerne aguarda switch G" source="Trilhos de Lucerne" target="Lucerne aguarda switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="335" y="69" curvePoint="false"/>
+<arcpath id="001" x="457" y="251" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Lucerne to Lucerne sob trilhos Stans" source="Trilhos de Lucerne" target="Lucerne sob trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="341" y="56" curvePoint="false"/>
+<arcpath id="001" x="742" y="51" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Lucerne to Lucerne toma switch G" source="Trilhos de Lucerne" target="Lucerne toma switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="339" y="65" curvePoint="false"/>
+<arcpath id="001" x="456" y="147" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Sarnen to Chega em Sarnen" source="Trilhos de Sarnen" target="Chega em Sarnen">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="297" y="1092" curvePoint="false"/>
+<arcpath id="001" x="136" y="1097" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Sarnen to Sarnen aguarda switch G" source="Trilhos de Sarnen" target="Sarnen aguarda switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="320" y="1079" curvePoint="false"/>
+<arcpath id="001" x="441" y="887" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Sarnen to Sarnen sob trilhos Stans" source="Trilhos de Sarnen" target="Sarnen sob trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="326" y="1092" curvePoint="false"/>
+<arcpath id="001" x="741" y="1100" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Sarnen to Sarnen toma switch G" source="Trilhos de Sarnen" target="Sarnen toma switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="324" y="1083" curvePoint="false"/>
+<arcpath id="001" x="441" y="1002" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Stans to Lucerne chega em Engelberg" source="Trilhos de Stans" target="Lucerne chega em Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="759" y="558" curvePoint="false"/>
+<arcpath id="001" x="906" y="455" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Stans to Lucerne deixou trilhos de Stans" source="Trilhos de Stans" target="Lucerne deixou trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="753" y="553" curvePoint="false"/>
+<arcpath id="001" x="927" y="222" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Stans to Sarnen chega em Engelberg" source="Trilhos de Stans" target="Sarnen chega em Engelberg">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="760" y="574" curvePoint="false"/>
+<arcpath id="001" x="907" y="659" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Trilhos de Stans to Sarnen deixou trilhos de Stans" source="Trilhos de Stans" target="Sarnen deixou trilhos de Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="753" y="580" curvePoint="false"/>
+<arcpath id="001" x="931" y="942" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Uso do switch G to Lucerne sob trilhos Stans" source="Uso do switch G" target="Lucerne sob trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="615" y="552" curvePoint="false"/>
+<arcpath id="001" x="747" y="72" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Uso do switch G to Lucerne toma switch G" source="Uso do switch G" target="Lucerne toma switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="606" y="552" curvePoint="false"/>
+<arcpath id="001" x="462" y="162" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Uso do switch G to Sarnen sob trilhos Stans" source="Uso do switch G" target="Sarnen sob trilhos Stans">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="615" y="581" curvePoint="false"/>
+<arcpath id="001" x="747" y="1077" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="Uso do switch G to Sarnen toma switch G" source="Uso do switch G" target="Sarnen toma switch G">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="606" y="580" curvePoint="false"/>
+<arcpath id="001" x="447" y="987" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+</net>
+</pnml>
